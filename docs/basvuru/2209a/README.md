@@ -4,6 +4,18 @@ Bu dizin, yürütücünün CPU zamanlama bitirme projesi için hazırlanan araş
 önerisi taslağını içerir. Başvuru TYBS üzerinden gönderilmemiştir; destek kararı,
 danışman onayı veya kuruluş e-imzası alınmış olduğu anlamına gelmez.
 
+## Doldurulmuş araştırma önerisi
+
+- [Word dosyasını aç](2209A_Burak_Sanli_Arastirma_Onerisi.docx)
+- [PDF ön izlemesini aç](2209A_Burak_Sanli_Arastirma_Onerisi.pdf)
+- [Doldurulmuş metni oku](2209A_Burak_Sanli_Arastirma_Onerisi.md)
+
+Belge, 2026 Başvuru İçeriği Bilgi Notu'ndaki bölüm sırasını izler. Hazırlık
+notları ana başvuru metninden çıkarılmış, takvim ve risk tabloları doldurulmuş,
+iki gerçek ön çalışma grafiği eklenmiştir. Bu dosya TYBS'ye aktarılacak araştırma
+önerisidir; resmî sistemde başvurunun gönderildiğini veya onaylandığını göstermez.
+Uygunluk, kaynakça ve bütçe/sistem onay kontrolleri ayrı kontrol listesindedir.
+
 ## Belgeler
 
 - [Araştırma önerisi — düzenlenebilir Word taslağı](2209a_arastirma_onerisi_2026_taslak.docx)

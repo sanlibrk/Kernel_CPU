@@ -1,13 +1,16 @@
-# Başvuru bilgileri ve metnin durumu
+# ARAŞTIRMA ÖNERİSİ
 
-Proje başlığı: Etkileşimli Görevlerde Yanıt Süresini İyileştirmeye Yönelik Bütçe ve Yaşlandırma Tabanlı CPU Zamanlama Politikasının Geliştirilmesi
-Yürütücü: Burak Şanlı
-Üniversite / bölüm: Harran Üniversitesi, Bilgisayar Mühendisliği
-Akademik danışman: Prof. Dr. Dursun Akaslan — başvuruya özgü kabul/onay henüz tamamlanmış değildir.
-Başvuru türü: Bireysel; başka öğrenci proje ortağı bulunmamaktadır.
-Önerilen proje süresi: 6 ay / 24 haftalık çalışma planı. Başlangıç tarihi resmî yürürlük tarihi ve danışman değerlendirmesiyle kesinleştirilecektir.
+## GENEL BİLGİLER
 
-Bu metin, paylaşılan 2026 çağrı duyurusu ve Başvuru İçeriği Bilgi Notu başlıklarına göre hazırlanmış başvuru taslağıdır. TYBS'de doldurulmuş veya gönderilmiş bir başvuru değildir. Proje kapsamı yalnızca yürütücünün CPU zamanlama çalışmasıdır. Gelecek faaliyetler plan, mevcut kod ve ölçümler ön çalışma olarak belirtilmiştir. Kaynakça, bütçe, mevcut donanım ve başvuru sahibinin uygunluk beyanları son kontrolden geçmelidir.
+| Alan | Bilgi |
+|---|---|
+| Proje başlığı | Etkileşimli Görevlerde Yanıt Süresini İyileştirmeye Yönelik Bütçe ve Yaşlandırma Tabanlı CPU Zamanlama Politikasının Geliştirilmesi |
+| Proje yürütücüsü | Burak Şanlı |
+| Üniversite / bölüm | Harran Üniversitesi / Bilgisayar Mühendisliği |
+| Akademik danışman | Prof. Dr. Dursun Akaslan |
+| Başvuru türü | Bireysel |
+| Proje süresi | 6 ay |
+
 
 
 # ÖZET
@@ -47,7 +50,7 @@ Amaç, açıkça tanımlanmış bir CPU zamanlama politikasını modelden gerçe
 4. Üç yük ailesi ve iki yoğunluk düzeyinde, her hücre için en az 10 eşleştirilmiş blokla varsayılan/özel politika karşılaştırması yapmak; ham kayıtları ve parametreleri saklamak.
 5. P95 gecikmenin yanında uzun işlerin tamamlanması, ilerleme ve politika maliyetini raporlamak; olumlu ve olumsuz koşulları aynı değerlendirmede açıklamak.
 
-Geliştirme hedeflerinin tamamlanması, hipotezin mutlaka doğrulanması anlamına gelmez. Pilot sonrası ve ana deneylerden önce sayısal başarı eşikleri sabitlenecektir. Başlangıç mühendislik hedefi, seçilen karma yüklerde en az yüzde 20 P95 gecikme azalması ile uzun iş tamamlanma süresindeki artışın yüzde 10'u aşmamasının birlikte sağlanmasıdır. Bu oranlar ölçülmüş sonuç veya literatürden türetilmiş evrensel sınır değil, danışmanla gerekçelendirilip ana deneylerden önce kayda alınacak önerilen kabul eşikleridir.
+Geliştirme hedeflerinin tamamlanması, hipotezin mutlaka doğrulanması anlamına gelmez. Pilot sonrası ve ana deneylerden önce sayısal başarı eşikleri sabitlenecektir. Başlangıç mühendislik hedefi, seçilen karma yüklerde en az yüzde 20 P95 gecikme azalması ile uzun iş tamamlanma süresindeki artışın yüzde 10'u aşmamasının birlikte sağlanmasıdır. Bu oranlar ölçülmüş sonuç veya literatürden türetilmiş evrensel sınır değil, ana deneylerden önce gerekçesiyle birlikte kayda alınacak araştırma hedefleridir.
 
 
 # 2. YÖNTEM
@@ -75,7 +78,7 @@ Model genişletme, çekirdek doğrulama ve uygulama ilk üç iş adımıyla; tek
 
 ## 3.1. Çalışma Takvimi
 
-Önerilen süre altı aydır. Aylar projenin yürürlüğe girmesinden itibaren göreli olarak gösterilmiştir; kesin takvim danışman ve resmî başlangıç durumuna göre işlenecektir. Beş iş adımı ardışık toplam altı ayı kapsar. Literatür incelemesi, satın alma, rapor hazırlama ve paylaşım faaliyetleri gerekli adımlara dahil edilmiştir; ayrı iş adımı olarak gösterilmemiştir.
+Çalışma altı aylık sürede yürütülecektir. Aylar projenin yürürlüğe girmesinden itibaren göreli olarak tanımlanmıştır; 24 haftalık aktif çalışma bu altı aylık dönem içinde planlanmıştır. Literatür incelemesi, raporlama ve paylaşım ilgili teknik faaliyetlerin içinde yürütülecek, ayrı iş adımı olarak gösterilmeyecektir.
 
 | Dönem | Faaliyet | Sorumlu | Başarı ölçütü | Başarıya katkı (%) |
 |---|---|---|---|---|
@@ -85,7 +88,7 @@ Model genişletme, çekirdek doğrulama ve uygulama ilk üç iş adımıyla; tek
 | İkinci yarı Ay 4–Ay 5 / hafta 15–20 | Pilot ve kontrollü karşılaştırmalı deneyler | Burak Şanlı | Altı deney hücresinde en az 10 eşleştirilmiş blok; en az 120 koşu; parametreler, ham veriler ve dışlama gerekçeleri kayıtlı | 25 |
 | Ay 6 / hafta 21–24 | Sağlamlık, maliyet ve başarısız yük koşullarının doğrulanması | Burak Şanlı | Bağımsız doğrulama koşulları; gecikme/ilerleme/maliyet tabloları; karşı örnekler ve tekrar üretim kontrolü | 15 |
 
-Katkı ağırlıkları toplamı yüzde 100'dür. Akademik danışman tüm adımlarda bilimsel değerlendirme ve rehberlik sağlayacaktır; ilgili resmî kabul/onay işlemi ayrıca tamamlanmalıdır.
+Katkı ağırlıkları toplamı yüzde 100'dür. Akademik danışman bütün iş adımlarında bilimsel değerlendirme ve rehberlik sağlayacaktır.
 
 ## 3.2. Risk Yönetimi
 
@@ -99,9 +102,9 @@ Katkı ağırlıkları toplamı yüzde 100'dür. Akademik danışman tüm adıml
 
 ## 3.3. Araştırma Olanakları
 
-Mevcut ön çalışmada C/Python kaynakları, testler, deney betikleri ve arşivlenmiş ölçümler hazırlanmıştır. Bu yazılım birikimi proje başlangıç girdisidir. Ön çalışma ortamı Debian 13 ve Linux 6.18.57'dir; mevcut bulut ortamının proje süresi boyunca kesintisiz tahsis edileceği varsayılmamaktadır.
+Çalışmada yürütücünün mevcut kişisel bilgisayarı ve açık kaynak geliştirme araçları kullanılacaktır. Kod geliştirme ve ön doğrulama için C derleyicisi, Python, otomatik testler ve sürüm kontrolü; çekirdek deneyleri için geri yüklenebilir ayrı bir sanal makine planlanmıştır. Sanal makinenin kaynak ve çekirdek yapılandırması ilk iş adımında kayıt altına alınarak politika yükleme yetkileri ve geri dönüş koşulları doğrulanacaktır.
 
-Geliştirmede yürütücünün bilgisayarı, açık kaynak derleyici/izleme araçları ve ayrı test VM'i kullanılması planlanmaktadır. Kişisel bilgisayarın işlemci, RAM, disk ve sanallaştırma desteği ile üniversitenin ek olanakları henüz doğrulanmadığından laboratuvar adı, kapasite veya kurum tahsis taahhüdü uydurulmamıştır. TYBS'ye son aktarım öncesi bu alan gerçek donanım bilgileri ve danışmanın doğruladığı olanaklarla tamamlanacaktır.
+Hazır araştırma altyapısı; C tabanlı zamanlama modeli, gerçek süreç ölçüm programı, 13 başarılı test yönteminin kayıtları, üç iş yükü ailesi, deney çalıştırıcısı ve altı gerçek ölçüm koşusunun ham verilerinden oluşmaktadır. Bu yazılım ve veri birikimi araştırmanın başlangıç olanaklarını sağlamaktadır. İlk ön çalışma ortamı Debian 13 ve Linux 6.18.57'dir. Mevcut olanaklarla yürütme esas alınmış, ek ekipman veya ücretli hizmet alımı planlanmamıştır. Yeni gider öngörüsü 0 TL'dir.
 
 
 # 4. ARAŞTIRMA ÖNERİSİNİN YAYGIN ETKİSİ
@@ -118,18 +121,21 @@ Yayın kabulü, patent, ticari ürün veya belirli performans kazancı kesin ç�
 
 # 5. BELİRTMEK İSTEDİĞİNİZ DİĞER KONULAR
 
-Ön çalışma verileri, uygulanabilirlik ve ölçüm altyapısı bakımından destekleyici niteliktedir. Karışık modelde ilk yanıtın 11 ms'den 3 ms'ye düşmesi ile yoğun etkileşimli modelde toplam beklemenin artması birlikte sunulacaktır. Mevcut gerçek Linux veri grubu, özel politika başarısının kanıtı olarak kullanılmayacaktır. Kaynak kod ve tarihsel veri arşivi: https://github.com/sanlibrk/Kernel_CPU
+Ön çalışma, algoritma geliştirme ve gerçek süreçlerden veri toplama altyapısının uygulanabilirliğini göstermektedir. Karışık model iş yükünde etkileşimli görevlerin ortalama ilk yanıtı 11 ms'den 3 ms'ye inmiştir. Yoğun etkileşimli senaryoda ise ortalama toplam bekleme 252,667 ms'den 303,833 ms'ye yükselmiştir. Bu karşıt bulgular, araştırmada ilk yanıtın yanında tamamlanma ve ilerleme ölçütlerinin birlikte değerlendirilmesini gerekçelendirmektedir.
+
+Mevcut gerçek Linux deneylerinde özel politika uygulanmamıştır. Bu kayıtlar başlangıç çizgisidir; Linux üzerinde politika kazancı kanıtı olarak yorumlanmamaktadır. Kaynak kodları, test kayıtları ve özgün deney arşivi sürümlendirilmiştir: https://github.com/sanlibrk/Kernel_CPU
 
 # 6. EKLER
 
-Başvuru değerlendirmesine katkı sağladığı ve sistem izin verdiği ölçüde politika akış şeması, küçük analitik zamanlama örneği ve ön çalışma karşılaştırma grafikleri eklenebilir. Haftalık sunum PDF'i araştırma önerisinin zorunlu bir yerine geçen belge olarak varsayılmamıştır. Katılımcı anketi veya ölçek kullanılmadığı için böyle bir ek oluşturulmamıştır. Paylaşılan sonuç raporu şablonu proje sonunda kullanılacak belgedir; şimdi tamamlanmış sonuçlar ve imzalarla doldurulmamıştır.
+Ek 1: Karışık model iş yükünde ortalama ilk yanıt ve arka plan dönüş süreleri.
+Ek 2: Yoğun etkileşimli model iş yükünde ilk yanıt ve toplam bekleme karşılaştırması.
+
+Grafikler ilk deney arşivinden üretilmiştir. Katılımcı anketi, ölçek veya kişisel veri toplama bu araştırmada planlanmamıştır.
 
 
-# KAYNAKLAR — son bibliyografik kontrol taslağı
+# KAYNAKLAR
 
-[1] Silberschatz, A., Galvin, P. B. ve Gagne, G. 2018. Operating System Concepts, 10. baskı. Wiley.
+[1] Silberschatz, A., Galvin, P. B. ve Gagne, G. 2018. Operating System Concepts. 10. baskı. Wiley.
 [2] The Linux Kernel Documentation. “CFS Scheduler”. https://docs.kernel.org/scheduler/sched-design-CFS.html
 [3] The Linux Kernel Documentation. “EEVDF Scheduler”. https://docs.kernel.org/scheduler/sched-eevdf.html
 [4] The Linux Kernel Documentation. “Extensible Scheduler Class”. https://docs.kernel.org/scheduler/sched-ext.html
-
-Metin içi atıflar [1]–[4] ile eşleştirilmiştir. Çevrim içi kaynakların içerikleri bu oturumda yeniden açılamamıştır; hedef çekirdek sürümüyle uyumları, bibliyografik yazım ve erişim tarihleri son kontrolde doğrulanmalıdır. DOI uydurulmamıştır; DOI'si bulunan kaynaklar için DOI eklenmesi bilgi notunun gereğidir. İlgili hakemli çalışmalarla karşılaştırma, kaynak doğrulaması tamamlanmadan bitirilmiş bir literatür taraması sayılmamalıdır.

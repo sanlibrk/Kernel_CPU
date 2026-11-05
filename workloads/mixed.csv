@@ -1,0 +1,12 @@
+id,class,arrival_ms,burst_ms
+1,background,0,120
+2,background,0,120
+3,background,0,120
+4,interactive,5,2
+5,interactive,15,2
+6,interactive,25,2
+7,interactive,35,2
+8,interactive,45,2
+9,interactive,55,2
+10,interactive,65,2
+11,interactive,75,2

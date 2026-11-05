@@ -18,6 +18,8 @@ gerçek Linux süreçleri üzerinde başlangıç ölçümlerinin toplanmasını 
 
 - [Uygulama mimarisi ve algoritma ayrıntıları](uygulama.md)
 - [Deney yöntemi, tüm koşular ve sonuçların değerlendirilmesi](deney_sonuclari.md)
+- [Aşama değerlendirmesi ve sonraki adımlar](degerlendirme_ve_sonraki_adimlar.md)
+- [PDF sunumu — 18 slayt](Burak_Sanli_Hafta2_CPU_Zamanlama.pdf)
 - [Arşivlenmiş ham veriler](../../experiments/hafta2/2026-11-05)
 
 Uygulama belgesi, veri yapıları ve fonksiyonları, seçim kurallarını, komut satırı
@@ -48,4 +50,19 @@ Politika henüz çekirdekte çalışmadığından Linux'a karşı kazanç ölç�
 Çekirdek/dağıtım seçimi, `sched_ext` ve BTF desteği, ayrı test sanal makinesi,
 yükleme/geri dönüş deneyi ve gerçek politika karşılaştırması açık işlerdir.
 
-İkinci haftanın PDF sunumu henüz hazırlanmamıştır.
+## PDF sunumu ve grafikler
+
+18 slaytlık sunum; problem tanımını, kaynak bileşenlerini, algoritma kurallarını,
+kontrollü zamanlama örneğini, model sonuçlarını, gerçek Linux başlangıç ölçümünü,
+testleri, sınırlılıkları ve sonraki aşamanın ölçütlerini içerir. Sayısal veriler
+ilk deney arşivinden alınmıştır; yerel Ubuntu/WSL kurulumu veya yerel performans
+doğrulanmış bir deney sonucu olarak sunulmaz.
+
+- [Sunumu aç](Burak_Sanli_Hafta2_CPU_Zamanlama.pdf)
+- [Karışık model iş yükü grafiği](grafikler/mixed.png)
+- [Yoğun etkileşimli model iş yükü grafiği](grafikler/interactive_pressure.png)
+- [Gerçek Linux P95 grafiği](grafikler/linux_p95.png)
+
+Sunumu ve grafikleri yeniden üretme adımları [ana sayfada](../../README.md)
+açıklanmıştır. Üretici: [`scripts/build_week2_presentation.py`](../../scripts/build_week2_presentation.py).
+Bu komut arşivi değiştirmez ve yeni performans deneyi çalıştırmaz.

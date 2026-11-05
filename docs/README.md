@@ -8,6 +8,6 @@ sunulmaz.
 | Hafta | Konu | Teknik kayıt | PDF |
 |---|---|---|---|
 | 1 | CPU yönetimi ve süreç zamanlama konu seçimi | [Kapsam](hafta1/README.md) | [Konu seçimi sunumu](hafta1/Burak_Sanli_210504018_BitirmeProjesi_1_KonuSecimi.pdf) |
-| 2 | Politika prototipi ve başlangıç ölçümleri | [Kapsam](hafta2/README.md), [uygulama](hafta2/uygulama.md), [sonuçlar](hafta2/deney_sonuclari.md) | Henüz hazırlanmadı |
+| 2 | Politika prototipi ve başlangıç ölçümleri | [Kapsam](hafta2/README.md), [uygulama](hafta2/uygulama.md), [sonuçlar](hafta2/deney_sonuclari.md), [değerlendirme](hafta2/degerlendirme_ve_sonraki_adimlar.md) | [İkinci hafta sunumu](hafta2/Burak_Sanli_Hafta2_CPU_Zamanlama.pdf) |
 
 Sonraki haftaların kayıtları, çalışmalar tamamlandıkça aynı düzenle eklenir.

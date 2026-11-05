@@ -15,6 +15,7 @@ Uygulama iki bağımsız C programı ve bunları doğrulayan Python araçlarınd
 | Linux başlangıç ölçümü | [`src/linux_baseline.c`](../../src/linux_baseline.c) | Mevcut Linux zamanlayıcısı altında periyodik kısa işlerin gecikmesini ölçer. |
 | Otomatik testler | [`tests/test_scheduling.py`](../../tests/test_scheduling.py) | Bilinen zamanlama örneklerini, girdi doğrulamasını ve gerçek süreç ölçümünün temel özelliklerini sınar. |
 | Deney yürütücüsü | [`scripts/run_experiments.py`](../../scripts/run_experiments.py) | Derleme, test ve deney çıktılarını aynı sonuç dizininde toplar. |
+| Sunum üreticisi | [`scripts/build_week2_presentation.py`](../../scripts/build_week2_presentation.py) | Arşivlenmiş verilerden grafikleri ve 18 slaytlık PDF'i üretir. |
 | Derleme giriş noktası | [`Makefile`](../../Makefile) | Derleme, test, deney ve derleme çıktısı temizleme hedeflerini tanımlar. |
 
 `scheduler_sim` bir Linux çekirdek zamanlayıcısı değildir. Modelin `rr` seçeneği
@@ -45,6 +46,7 @@ olarak değerlendirilir. Çalıştırılabilir dosyalar `build/` dizinine yazıl
 | `make` / `make all` | İki C programını derler; güncel dosyaları yeniden derlemez. |
 | `make test` | Derlemeden sonra `unittest` testlerini ayrıntılı çıktı ile yürütür. |
 | `make experiment` | Deney betiğini çalıştırır; betik de derlemeyi ve testleri doğrular. |
+| `make presentation` | İsteğe bağlı sunum bağımlılıklarıyla mevcut arşivden PDF ve grafikleri üretir; yeni deney yapmaz. |
 | `make clean` | Yalnızca `build/` dizinini siler; deney sonuçlarını silmez. |
 
 ## 3. Zamanlama modelinin varsayımları
@@ -502,6 +504,26 @@ koşu işaretçisi bunlara yönlendirilmez. `build/` ve `results/`, `.gitignore`
 tarafından dışlanır. Bu nedenle yerelde üretilen bütün ham sonuçlar otomatik
 olarak GitHub deposuna eklenmez. Kalıcı olarak paylaşılacak deney kayıtları
 ilgili araştırma raporuyla birlikte ayrıca seçilip sürümlendirilmelidir.
+
+### 6.4. PDF ve grafiklerin yeniden üretilmesi
+
+`make presentation`, sürümlendirilmiş ilk deney grubunu okuyarak üç PNG grafiği
+ve 18 slaytlık PDF sunumu üretir. Yeni deney çalıştırmaz ve tarihsel arşivi
+değiştirmez. Grafikler model karşılaştırmasını gerçek Linux başlangıç ölçümünden
+ayrı gösterir. Kontrollü zaman çizelgesi, otomatik testte kullanılan görev
+tanımından türetilmiştir.
+
+Bu hedef için isteğe bağlı ReportLab 4.4.9 ve Matplotlib 3.10.8 kullanılır;
+bağımlılıklar `requirements-presentation.txt` içinde belirtilmiştir. Fontlar
+Matplotlib ile gelen DejaVu ailesinden alınır. Yalnızca PDF'i okumak veya C
+uygulamasını derleyip test etmek için bu ek bağımlılıklar gerekli değildir.
+Kurulum ve yeniden üretim komutları [ana sayfada](../../README.md) yer almaktadır.
+
+Üretici, test/örnek sayısı ve kullanılan JSON kayıtlarının bazı alanları için
+tutarlılık kontrolleri yapar. Bu kontroller arşivin bütünlük dosyasının yerini
+almaz; ham veri bütünlüğü ayrıca `sha256sums.txt` üzerinden denetlenebilir.
+Sabit girdilerle PDF ve grafiklerin byte düzeyinde yeniden üretilebilirliği
+ilk sunum hazırlanırken kontrol edilmiştir.
 
 ## 7. Sonuçların yorumlanması ve sonraki aşama
 

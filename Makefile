@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -std=c11 -O2 -g -Wall -Wextra -Werror -pedantic
 PYTHON = python3
 
-.PHONY: all test experiment clean
+.PHONY: all test experiment presentation clean
 all: build/scheduler_sim build/linux_baseline
 
 build:
@@ -19,6 +19,9 @@ test: all
 
 experiment: all
 	$(PYTHON) scripts/run_experiments.py
+
+presentation:
+	$(PYTHON) scripts/build_week2_presentation.py
 
 clean:
 	rm -rf build

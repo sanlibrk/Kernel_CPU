@@ -13,7 +13,7 @@ politikası geliştirmek ve sınırlarını karşılaştırmalı deneylerle değ
 | Hafta | Kapsam | Belgeler |
 |---|---|---|
 | 1 | Konu seçimi, problem tanımı ve geliştirme yaklaşımı | [Hafta 1](docs/hafta1/README.md) · [Özgün PDF](docs/hafta1/Burak_Sanli_210504018_BitirmeProjesi_1_KonuSecimi.pdf) |
-| 2 | C tabanlı politika prototipi, Linux başlangıç ölçümü ve otomatik kontroller | [Hafta 2](docs/hafta2/README.md) · [Uygulama ayrıntıları](docs/hafta2/uygulama.md) · [Deney sonuçları](docs/hafta2/deney_sonuclari.md) |
+| 2 | C tabanlı politika prototipi, Linux başlangıç ölçümü ve otomatik kontroller | [Hafta 2](docs/hafta2/README.md) · [Uygulama ayrıntıları](docs/hafta2/uygulama.md) · [Deney sonuçları](docs/hafta2/deney_sonuclari.md) · [PDF sunumu](docs/hafta2/Burak_Sanli_Hafta2_CPU_Zamanlama.pdf) |
 
 Haftalık teknik belgeler ve mevcut PDF sunumları [belge dizininde](docs/README.md)
 listelenmektedir. Yeni haftalar tamamlandıkça aynı dizine eklenir.
@@ -77,3 +77,24 @@ Sonraki geliştirme aşaması, ekip çekirdeğini belirlemek ve ayrı bir test s
 makinesinde `sched_ext`/BTF desteği ile güvenli yükleme/geri dönüş sürecini
 doğrulamaktır. Ardından politika kuralları çekirdeğe uyarlanarak aynı deney
 düzeninde mevcut Linux davranışıyla karşılaştırılacaktır.
+
+## İkinci hafta değerlendirmesi ve sunumu
+
+[Değerlendirme ve sonraki adımlar](docs/hafta2/degerlendirme_ve_sonraki_adimlar.md),
+tamamlanan çıktıları, olumlu ve gerileyen ölçütleri ve çekirdek entegrasyonuna geçiş
+ölçütlerini bir araya getirir. [18 slaytlık PDF](docs/hafta2/Burak_Sanli_Hafta2_CPU_Zamanlama.pdf)
+ve [grafikleri](docs/hafta2/grafikler) arşivlenmiş ilk deney grubundan üretilmiştir.
+PDF'i okumak için geliştirme ortamı veya ek paket kurulumu gerekmez.
+
+Sunumu yeniden üretmek için isteğe bağlı Python bağımlılıkları kullanılır:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements-presentation.txt
+make presentation
+```
+
+Linux dağıtımında sanal ortam desteği yoksa `python3-venv` paketinin kurulması
+gerekebilir. Bu bağımlılıklar C programlarını derlemek veya test etmek için
+gerekli değildir. Sunum hedefi yeni deney yapmaz; sürümlendirilmiş veri grubunu kullanır.

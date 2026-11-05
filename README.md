@@ -98,3 +98,9 @@ make presentation
 Linux dağıtımında sanal ortam desteği yoksa `python3-venv` paketinin kurulması
 gerekebilir. Bu bağımlılıklar C programlarını derlemek veya test etmek için
 gerekli değildir. Sunum hedefi yeni deney yapmaz; sürümlendirilmiş veri grubunu kullanır.
+
+## Araştırma desteği başvuru hazırlığı
+
+[2209-A 2026 araştırma önerisi taslağı ve hazırlık durumu](docs/basvuru/2209a/README.md),
+bireysel CPU zamanlama projesinin tüm geliştirme ve değerlendirme planını içerir.
+Taslak hazırlanması, başvurunun gönderildiği veya desteğin kabul edildiği anlamına gelmez.

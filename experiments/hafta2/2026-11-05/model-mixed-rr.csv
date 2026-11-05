@@ -1,0 +1,12 @@
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,120,0,368,0,248,368
+2,background,0,120,4,372,4,252,372
+3,background,0,120,8,376,8,256,376
+4,interactive,5,2,16,18,11,11,13
+5,interactive,15,2,26,28,11,11,13
+6,interactive,25,2,36,38,11,11,13
+7,interactive,35,2,46,48,11,11,13
+8,interactive,45,2,56,58,11,11,13
+9,interactive,55,2,66,68,11,11,13
+10,interactive,65,2,76,78,11,11,13
+11,interactive,75,2,86,88,11,11,13

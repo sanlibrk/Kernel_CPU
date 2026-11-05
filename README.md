@@ -1,19 +1,44 @@
-# CPU yönetimi ve süreç zamanlama — ikinci hafta
+# CPU yönetimi ve süreç zamanlama
 
-Burak Şanlı · Harran Üniversitesi Bilgisayar Mühendisliği
+**Burak Şanlı · Harran Üniversitesi · Bilgisayar Mühendisliği Bitirme Projesi**
+**Danışman:** Prof. Dr. Dursun Akaslan
 
-## VS Code'da açma
+Bu proje, Linux tabanlı bir sistemde CPU yoğun arka plan işleriyle birlikte çalışan
+kısa ve etkileşimli görevlerin bekleme sürelerini incelemektedir. Amaç, uzun işlerin
+ilerlemesini koruyarak kısa görevlerin yanıt süresini azaltabilecek bir zamanlama
+politikası geliştirmek ve sınırlarını karşılaştırmalı deneylerle değerlendirmektir.
 
-Proje klasörünü açın veya `Kernel_CPU.code-workspace` dosyasına çift tıklayın.
-İlk incelenecek dosya `src/scheduler_sim.c`; gerçek Linux ölçüm programı
-`src/linux_baseline.c`, testler `tests/test_scheduling.py` içindedir.
+## Haftalık çalışmalar
 
-## Çalıştırma
+| Hafta | Kapsam | Belgeler |
+|---|---|---|
+| 1 | Konu seçimi, problem tanımı ve geliştirme yaklaşımı | [Hafta 1](docs/hafta1/README.md) · [Özgün PDF](docs/hafta1/Burak_Sanli_210504018_BitirmeProjesi_1_KonuSecimi.pdf) |
+| 2 | C tabanlı politika prototipi, Linux başlangıç ölçümü ve otomatik kontroller | [Hafta 2](docs/hafta2/README.md) · [Uygulama ayrıntıları](docs/hafta2/uygulama.md) · [Deney sonuçları](docs/hafta2/deney_sonuclari.md) |
 
-Gerekenler: Linux, GCC (C11), GNU Make ve Python 3.10+.
-Windows'ta kodları doğrudan inceleyebilirsiniz; gerçek süreç ölçümünü WSL/Linux'ta
-çalıştırın. Ek Python paketi, root veya çekirdek modülü gerekmiyor.
-Bulut görevleri zaten yalıtılmıştır; mevcut checkout'u kullanın, yeni worktree gerekmez.
+Haftalık teknik belgeler ve mevcut PDF sunumları [belge dizininde](docs/README.md)
+listelenmektedir. Yeni haftalar tamamlandıkça aynı dizine eklenir.
+
+## Mevcut uygulama
+
+| Bileşen | İşlev |
+|---|---|
+| [`scheduler_sim`](src/scheduler_sim.c) | Tek CPU ve 1 ms adımlı modelde Round Robin ile bütçe/yaşlandırma tabanlı politika prototipini karşılaştırır. |
+| [`linux_baseline`](src/linux_baseline.c) | Gerçek Linux süreçleriyle mevcut zamanlayıcı altında uyanma ve tamamlanma gecikmesini ölçer. |
+| [Deney çalıştırıcısı](scripts/run_experiments.py) | Testleri, model senaryolarını ve gerçek Linux koşularını çalıştırıp ham sonuçları ve ortam bilgilerini kaydeder. |
+| [Otomatik testler](tests/test_scheduling.py) | Bilinen zamanlama örneklerini, süre muhasebesini, girdi doğrulamasını ve gerçek ölçüm programını kontrol eder. |
+
+İkinci haftada politika kuralları model düzeyinde uygulanmıştır. Linux çekirdeğine
+özel zamanlama politikası henüz yüklenmemiştir. Modeldeki Round Robin referansı,
+Linux'un varsayılan adil zamanlayıcısının taklidi değildir; model karşılaştırması
+Linux üzerinde performans artışı kanıtı olarak yorumlanmamalıdır.
+
+## Gereksinimler ve çalıştırma
+
+- Linux; Windows üzerinde WSL/Ubuntu kullanılabilir.
+- C11 destekli GCC, GNU Make, Python 3.10+ ve saat dilimi verisi.
+- Derleme ve deneyler için ek Python paketi, yönetici yetkisi veya çekirdek modülü gerekmez.
+
+Komutlar deponun kök dizininde çalıştırılır:
 
 ```bash
 make
@@ -21,22 +46,9 @@ make test
 make experiment
 ```
 
-`make experiment`, testlerden sonra altı model ve altı gerçek Linux koşusu yapar.
-Çıktılar `results/week2-.../` dizinindedir; ham CSV/JSON, test günlüğü ve özet
-saklanır. Her başarılı deney `results/latest.json` işaretçisini günceller.
-`build/` ve `results/` üretilen çıktılardır; Git'e dahil edilmez.
-
-## İki programın farkı
-
-**scheduler_sim:** C ile yazılmış tek CPU, 1 ms adımlı zamanlama modeli.
-Round Robin referansı ile bütçe/yaşlandırma içeren politika prototipini karşılaştırır.
-Bu program Linux zamanlayıcısını değiştirmez. RR, Linux'un varsayılan adil
-zamanlayıcısının modeli değildir.
-
-**linux_baseline:** Gerçek Linux süreçlerini aynı izinli CPU'ya sabitler.
-Periyodik kısa CPU işi ile CPU yoğun arka plan işçilerini çalıştırır.
-Uyanma ve tamamlanma gecikmesini, arka plan işçilerinin CPU/duvar saati sürelerini
-kaydeder. Özel politika bu ölçümde uygulanmaz; mevcut Linux davranışı ölçülür.
+VS Code ile proje klasörü veya `Kernel_CPU.code-workspace` açılabilir.
+Windows üzerinde Linux ölçüm programının derleme ve çalıştırma adımları WSL
+terminalinde yürütülmelidir.
 
 ```bash
 ./build/scheduler_sim --policy rr workloads/mixed.csv
@@ -45,39 +57,23 @@ kaydeder. Özel politika bu ölçümde uygulanmaz; mevcut Linux davranışı öl
 ./build/linux_baseline --workers 2 --samples 40
 ```
 
-## Politika prototipi
+`make experiment`, testlerden sonra altı model ve altı gerçek Linux koşusu üretir.
+Her gerçek koşuda 40 örnek kaydedilir; toplam 240 örnek toplanır. Çıktılar
+`results/week2-.../` dizinine yazılır. `results/latest.json` yalnızca başarılı bir
+deney grubundan sonra güncellenir. `build/` ve yeni `results/` çıktıları Git'e
+dahil edilmez. Değerlendirme için arşivlenmiş ilk veri grubu
+[`experiments/hafta2/2026-11-05`](experiments/hafta2/2026-11-05) altındadır.
 
-- 4 ms zaman dilimi; girişte açıkça belirtilen etkileşimli/arka plan görev sınıfları.
-- Sabit 20 ms pencerede 8 ms etkileşimli tercih bütçesi; kullanılmayan bütçe taşınmaz.
-- Arka plan işi hazırsa bütçe tükendiğinde ona sıra verilir.
-- Seçim anında en az 20 ms bekleyen görevlere yaşlandırma önceliği tanınır.
-- Sınıf içinde FIFO/Round Robin; başka hazır iş yoksa CPU boş bırakılmaz.
+## Doğrulama ve sınırlar
 
-Bütçe katı CPU kotası değildir: yaşlandırma veya başka sınıfta hazır iş olmaması
-bütçeyi aşabilir. Sıfır bütçeyle yaşlandırma üzerinden seçilen etkileşimli görev
-1 ms çalışabilir; arka plan işi hazırsa sonraki adımda yeniden seçim yapılır.
-Yeni görev gelişi tek başına çalışan görevi kesmez, zaman dilimi beklenir.
-Modelde I/O, çok çekirdek ve bağlam değiştirme maliyeti yoktur. Yaşlandırma tüm
-yüklerde kesin bir bekleme üst sınırı garantisi değildir.
+İlk deney grubunda 13 test başarılı olmuş, üç model iş yükü iki politikayla
+çalıştırılmış ve gerçek Linux başlangıç ölçümleri tamamlanmıştır. Ortam,
+parametreler, tüm tekrarlar ve yorumlama sınırları [deney raporunda](docs/hafta2/deney_sonuclari.md)
+yer almaktadır. Modelde I/O, çok çekirdek yerleşimi ve bağlam değiştirme maliyeti
+bulunmamaktadır. Gerçek ölçümler konteyner kotası, sanallaştırma ve sistem yükünden
+etkilenebilir; sonuçlar genel performans veya kesin gecikme garantisi değildir.
 
-Model yanıt süresi = ilk başlama − varış; toplam bekleme = tamamlanma − varış − CPU ihtiyacı.
-Gerçek programda uyanma gecikmesi = çalışmaya dönüş − planlanan uyanma anı.
-Bu, saf çekirdek kuyruk gecikmesi değildir; timer, sanallaştırma ve ortam yükü de etkiler.
-Tamamlanma gecikmesi kısa CPU işini de kapsar. P95 sıralı örneklerde
-`ceil(0.95 * n)` sırasıdır; örnek sayısı ve tekrarlar sonuçlarla birlikte belirtilir.
-
-**Modeldeki sonuçlar Linux performans artışı kanıtlamaz.** Gerçek Linux programı
-yalnızca başlangıç çizgisidir. Henüz çekirdeğe politika yüklenmedi.
-
-## Mevcut ortam ve sonraki adım
-
-İlk ortam: Debian 13, Linux 6.18.57, GCC 14.2. Çekirdek numarası tek başına
-`sched_ext` desteğini garanti etmez. Bu oturumda sched_ext sysfs ve çekirdek BTF
-arayüzleri görünmüyor; süreçte yönetim/BPF yetkileri yok.
-
-Sonraki aşama: ekip çekirdeğini belirlemek, ayrı test VM'inde `sched_ext`/BTF
-desteğini doğrulamak, örnek politika ve güvenli geri dönüşü denemek. Ardından bu
-kuralları çekirdeğe taşıyıp aynı iş yüklerinde gerçek karşılaştırma yapmak.
-PDF sunumu kullanıcıyla içerik netleştirildikten sonra ayrıca hazırlanacak.
-
-Açıklamalı dosya rehberi: [docs/kod_rehberi.md](docs/kod_rehberi.md).
+Sonraki geliştirme aşaması, ekip çekirdeğini belirlemek ve ayrı bir test sanal
+makinesinde `sched_ext`/BTF desteği ile güvenli yükleme/geri dönüş sürecini
+doğrulamaktır. Ardından politika kuralları çekirdeğe uyarlanarak aynı deney
+düzeninde mevcut Linux davranışıyla karşılaştırılacaktır.

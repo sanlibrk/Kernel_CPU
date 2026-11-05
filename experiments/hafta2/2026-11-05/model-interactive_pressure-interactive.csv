@@ -1,0 +1,16 @@
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,80,8,472,8,392,472
+2,background,0,80,12,476,12,396,476
+3,background,0,80,16,480,16,400,480
+4,interactive,0,20,0,326,0,306,326
+5,interactive,2,20,4,332,2,310,330
+6,interactive,4,20,20,267,16,243,263
+7,interactive,6,20,28,353,22,327,347
+8,interactive,8,20,29,367,21,339,359
+9,interactive,10,20,31,378,21,348,368
+10,interactive,12,20,32,388,20,356,376
+11,interactive,14,20,37,363,23,329,349
+12,interactive,16,20,38,341,22,305,325
+13,interactive,18,20,43,287,25,249,269
+14,interactive,20,20,47,291,27,251,271
+15,interactive,22,20,55,325,33,283,303

@@ -1,0 +1,278 @@
+{
+  "created_at": "2026-11-05T23:11:13.711782+03:00",
+  "environment": {
+    "kernel": "6.18.57",
+    "machine": "x86_64",
+    "os_release": "Debian GNU/Linux 13 (trixie)",
+    "allowed_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "sched_ext_visible": false,
+    "btf_visible": false,
+    "cgroup_cpu.max": "400000 100000",
+    "cgroup_cpu.stat": "usage_usec 21598985\nuser_usec 14881566\nsystem_usec 6717418\nnice_usec 0\nnr_periods 2907\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0",
+    "cgroup_memory.max": "34359738368"
+  },
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "policy_parameters": {
+    "quantum_ms": 4,
+    "window_ms": 20,
+    "interactive_budget_ms": 8,
+    "aging_ms": 20
+  },
+  "model": {
+    "cpu_only": {
+      "rr": {
+        "task_count": 3,
+        "makespan_ms": 360,
+        "interactive": {
+          "count": 0
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 4,
+          "response_p95_ms": 8,
+          "waiting_mean_ms": 236,
+          "turnaround_mean_ms": 356
+        },
+        "file": "model-cpu_only-rr.csv"
+      },
+      "interactive": {
+        "task_count": 3,
+        "makespan_ms": 360,
+        "interactive": {
+          "count": 0
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 4,
+          "response_p95_ms": 8,
+          "waiting_mean_ms": 236,
+          "turnaround_mean_ms": 356
+        },
+        "file": "model-cpu_only-interactive.csv"
+      }
+    },
+    "interactive_pressure": {
+      "rr": {
+        "task_count": 15,
+        "makespan_ms": 480,
+        "interactive": {
+          "count": 12,
+          "response_mean_ms": 31.333333333333332,
+          "response_p95_ms": 54,
+          "waiting_mean_ms": 252.66666666666666,
+          "turnaround_mean_ms": 272.6666666666667
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 4,
+          "response_p95_ms": 8,
+          "waiting_mean_ms": 396,
+          "turnaround_mean_ms": 476
+        },
+        "file": "model-interactive_pressure-rr.csv"
+      },
+      "interactive": {
+        "task_count": 15,
+        "makespan_ms": 480,
+        "interactive": {
+          "count": 12,
+          "response_mean_ms": 19.333333333333332,
+          "response_p95_ms": 33,
+          "waiting_mean_ms": 303.8333333333333,
+          "turnaround_mean_ms": 323.8333333333333
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 12,
+          "response_p95_ms": 16,
+          "waiting_mean_ms": 396,
+          "turnaround_mean_ms": 476
+        },
+        "file": "model-interactive_pressure-interactive.csv"
+      }
+    },
+    "mixed": {
+      "rr": {
+        "task_count": 11,
+        "makespan_ms": 376,
+        "interactive": {
+          "count": 8,
+          "response_mean_ms": 11,
+          "response_p95_ms": 11,
+          "waiting_mean_ms": 11,
+          "turnaround_mean_ms": 13
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 4,
+          "response_p95_ms": 8,
+          "waiting_mean_ms": 252,
+          "turnaround_mean_ms": 372
+        },
+        "file": "model-mixed-rr.csv"
+      },
+      "interactive": {
+        "task_count": 11,
+        "makespan_ms": 376,
+        "interactive": {
+          "count": 8,
+          "response_mean_ms": 3,
+          "response_p95_ms": 3,
+          "waiting_mean_ms": 3,
+          "turnaround_mean_ms": 5
+        },
+        "background": {
+          "count": 3,
+          "response_mean_ms": 4.666666666666667,
+          "response_p95_ms": 10,
+          "waiting_mean_ms": 252,
+          "turnaround_mean_ms": 372
+        },
+        "file": "model-mixed-interactive.csv"
+      }
+    }
+  },
+  "linux_baseline": [
+    {
+      "file": "linux-workers0-run1.json",
+      "repetition": 1,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 0,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 0.165194,
+      "wake_p50_ms": 0.14726,
+      "wake_p95_ms": 0.289082,
+      "wake_max_ms": 0.414238,
+      "background_wall_ms": []
+    },
+    {
+      "file": "linux-workers2-run1.json",
+      "repetition": 1,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 2,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 1.095446,
+      "wake_p50_ms": 0.891242,
+      "wake_p95_ms": 2.821243,
+      "wake_max_ms": 3.340732,
+      "background_wall_ms": [
+        1620.925871,
+        1620.596351
+      ]
+    },
+    {
+      "file": "linux-workers0-run2.json",
+      "repetition": 2,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 0,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 0.109157,
+      "wake_p50_ms": 0.106461,
+      "wake_p95_ms": 0.129169,
+      "wake_max_ms": 0.158034,
+      "background_wall_ms": []
+    },
+    {
+      "file": "linux-workers2-run2.json",
+      "repetition": 2,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 2,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 1.122841,
+      "wake_p50_ms": 0.855589,
+      "wake_p95_ms": 2.969053,
+      "wake_max_ms": 3.215313,
+      "background_wall_ms": [
+        1624.659203,
+        1622.225022
+      ]
+    },
+    {
+      "file": "linux-workers0-run3.json",
+      "repetition": 3,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 0,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 0.133546,
+      "wake_p50_ms": 0.114232,
+      "wake_p95_ms": 0.165647,
+      "wake_max_ms": 0.664773,
+      "background_wall_ms": []
+    },
+    {
+      "file": "linux-workers2-run3.json",
+      "repetition": 3,
+      "kind": "linux_baseline",
+      "kernel": "6.18.57",
+      "cpu": 0,
+      "scheduler": "SCHED_OTHER",
+      "workers": 2,
+      "sample_count": 40,
+      "period_ms": 20,
+      "burst_us": 500,
+      "worker_cpu_budget_ms": 800,
+      "wake_mean_ms": 1.099902,
+      "wake_p50_ms": 0.92086,
+      "wake_p95_ms": 2.771535,
+      "wake_max_ms": 3.20389,
+      "background_wall_ms": [
+        1623.205389,
+        1621.255906
+      ]
+    }
+  ],
+  "source_sha256": {
+    ".gitignore": "fa00b73b45551204e81ae84caf96d3c9e3f2f9c9903a9da9b91547848e5af7d0",
+    "Kernel_CPU.code-workspace": "7fc12ac38fab619ca6587bd940e8384763eeb524919f035d30ab7c4a9688cdff",
+    "Makefile": "ac95d804b075e9bea78a32529b6c96440624ff66e996353d83f7f8be747a01d1",
+    "README.md": "2c4d35e7f18e8686344d77cad33ce7aeef1f382767f2336e1e240b1f31638b80",
+    "docs/kod_rehberi.md": "70c310a06e53ff13e8f15de614d88a76a63530ab078b66f2008675cdec653ed1",
+    "scripts/run_experiments.py": "e96fbe3c7f7faec8fbad73c82a140b4473f29d84f12c42db287d753f2c78b9ee",
+    "src/linux_baseline.c": "af2abda8a746a5f52518d177f8e1e3b9630f9fd8771196de40432a6b4d1afb73",
+    "src/scheduler_sim.c": "9e8f16be904504f0a30b29e9fe13c3eb4a912f3c176a50dc8e8ffb99b2a27124",
+    "tests/test_scheduling.py": "0570b0f8f7f04eb93d628e94ebfa2b87a5db0558ded2caef78d34c5728a1a98d",
+    "workloads/cpu_only.csv": "e147daa1d658c507f8a16f6a27015fbc5f2fdb0a287e6eb03ff7ab5d868bc2a1",
+    "workloads/interactive_pressure.csv": "bd5c1a17381e67f6aa886fde025282b993c3035fbb30307759d594cb0cc8fd4c",
+    "workloads/mixed.csv": "300a756f7df3d99f2667b27c535e78be269c295bccdf6d7851a3853bd008326c"
+  }
+}

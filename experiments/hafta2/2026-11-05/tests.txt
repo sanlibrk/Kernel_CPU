@@ -1,0 +1,18 @@
+test_invalid_measurement_options_rejected (test_scheduling.LinuxBaselineTests.test_invalid_measurement_options_rejected) ... ok
+test_real_measurements_with_and_without_workers (test_scheduling.LinuxBaselineTests.test_real_measurements_with_and_without_workers) ... ok
+test_aging_bypasses_large_interactive_budget (test_scheduling.SimulationTests.test_aging_bypasses_large_interactive_budget) ... ok
+test_background_only_matches_rr (test_scheduling.SimulationTests.test_background_only_matches_rr) ... ok
+test_budget_gives_background_cpu_under_interactive_pressure (test_scheduling.SimulationTests.test_budget_gives_background_cpu_under_interactive_pressure) ... ok
+test_input_order_does_not_choose_priority (test_scheduling.SimulationTests.test_input_order_does_not_choose_priority) ... ok
+test_interactive_preference_in_controlled_case (test_scheduling.SimulationTests.test_interactive_preference_in_controlled_case) ... ok
+test_invalid_options_rejected (test_scheduling.SimulationTests.test_invalid_options_rejected) ... ok
+test_invalid_workloads_rejected (test_scheduling.SimulationTests.test_invalid_workloads_rejected) ... ok
+test_known_round_robin (test_scheduling.SimulationTests.test_known_round_robin) ... ok
+test_no_artificial_idle_when_only_interactive_tasks (test_scheduling.SimulationTests.test_no_artificial_idle_when_only_interactive_tasks) ... ok
+test_randomized_accounting_and_all_tasks_complete (test_scheduling.SimulationTests.test_randomized_accounting_and_all_tasks_complete) ... ok
+test_single_task_and_initial_idle (test_scheduling.SimulationTests.test_single_task_and_initial_idle) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.202s
+
+OK

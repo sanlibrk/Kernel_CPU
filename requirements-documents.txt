@@ -1,0 +1,2 @@
+# Optional dependency for building the application Word document.
+python-docx==1.2.0

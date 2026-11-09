@@ -99,8 +99,9 @@ Linux dağıtımında sanal ortam desteği yoksa `python3-venv` paketinin kurulm
 gerekebilir. Bu bağımlılıklar C programlarını derlemek veya test etmek için
 gerekli değildir. Sunum hedefi yeni deney yapmaz; sürümlendirilmiş veri grubunu kullanır.
 
-## Araştırma desteği başvuru hazırlığı
+## Araştırma desteği başvurusu
 
-[2209-A 2026 araştırma önerisi taslağı ve hazırlık durumu](docs/basvuru/2209a/README.md),
-bireysel CPU zamanlama projesinin tüm geliştirme ve değerlendirme planını içerir.
-Taslak hazırlanması, başvurunun gönderildiği veya desteğin kabul edildiği anlamına gelmez.
+[2209-A 2026 araştırma önerisi ve başvuru belgeleri](docs/basvuru/2209a/README.md),
+bireysel CPU zamanlama projesinin ayrıntılı altı aylık planını, güncel Word/PDF
+dosyalarını, teknik kaynakları ve TYBS aktarım rehberini içerir. Belgelerin
+hazırlanması, resmî başvurunun gönderildiği veya desteğin kabul edildiği anlamına gelmez.

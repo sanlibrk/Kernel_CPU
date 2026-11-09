@@ -1,0 +1,34 @@
+[
+  {
+    "citation": "Linux Kernel Community, 2024a",
+    "title": "CFS Scheduler",
+    "version": "v6.12",
+    "url": "https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-design-CFS.rst",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "85115c5dfe37c0fa0f583ca6f8cd72c42827a8cc48dff8e623fe07943be33bd5"
+  },
+  {
+    "citation": "Linux Kernel Community, 2024b",
+    "title": "EEVDF Scheduler",
+    "version": "v6.12",
+    "url": "https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-eevdf.rst",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "75b99048d738b7683d06c5844e150253e91d75ec46e774f7a96cf0e9d39056a0"
+  },
+  {
+    "citation": "Linux Kernel Community, 2024c",
+    "title": "Extensible Scheduler Class",
+    "version": "v6.12",
+    "url": "https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-ext.rst",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "b5a95750fb7e7d2778454b80e89c25d525ce739700b6528029ed7701613228e6"
+  },
+  {
+    "citation": "Linux Kernel Community, 2024d",
+    "title": "scx_simple.bpf.c",
+    "version": "v6.12",
+    "url": "https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "a5ca4f287f8a04e3a69e4394a8620d395a847fe9947db52ce907148a085748fc"
+  }
+]

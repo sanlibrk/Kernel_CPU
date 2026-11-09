@@ -1,0 +1,49 @@
+{
+  "checked_artifact": "2209A_Burak_Sanli_Arastirma_Onerisi.docx",
+  "abstract_words_excluding_keywords": 270,
+  "abstract_words_including_keywords": 281,
+  "section_characters": {
+    "section_1_1": 3041,
+    "section_1_2": 2453,
+    "method": 13779
+  },
+  "required_headings_present": true,
+  "planned_duration_months": 6,
+  "work_package_count": 5,
+  "work_package_weights": [
+    15,
+    20,
+    25,
+    25,
+    15
+  ],
+  "weight_sum": 100,
+  "main_runs": {
+    "latency": 80,
+    "cpu_only": 40,
+    "total": 120
+  },
+  "secondary_runs": 60,
+  "minimum_short_samples_per_latency_run": 1000,
+  "short_samples_required_for_cpu_only": false,
+  "word_tables": 5,
+  "embedded_figures": 2,
+  "all_listed_sources_cited": true,
+  "portal_submission_verified": false,
+  "tybs_rendering_verified": false,
+  "advisor_approval_verified": false,
+  "institution_signature_verified": false,
+  "official_bibliography_webpage_accessible": false,
+  "sha256": {
+    "2209A_Burak_Sanli_Arastirma_Onerisi.md": "faf13083dd2833debd559848a288bb77366fa5e490daa00e44ee7e45d2893109",
+    "2209A_Burak_Sanli_Arastirma_Onerisi.docx": "9ac9c14320dc84eba1311629dbdcc7cf28154c7f76205a62d2e446db3819142e",
+    "2209A_Burak_Sanli_Arastirma_Onerisi.pdf": "465e78d689e654cf64a4e44d3b455c709aaa3d2c20b29f2652a1663b417a711c"
+  },
+  "pdf_checks": {
+    "pages": 10,
+    "required_source_citations_found": true,
+    "placed_figures": 2,
+    "text_within_page_bounds": true,
+    "unicode_replacement_characters": 0
+  }
+}

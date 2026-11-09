@@ -1,84 +1,90 @@
-# 2209-A 2026 başvuru kontrolü
+# 2209-A 2026 — Gönderim öncesi kontrol
 
-## Dayanak ve belgenin niteliği
+## Belge kontrolünün kapsamı
 
-Bu kontrol listesi, yürütücünün paylaştığı “2209-A_2026_Yili_Cagri_Duyurusu.pdf”
-ve “2209-A_Basvuru_Icerigi_Bilgi_Notu.pdf” içeriğine dayanır. Bu dosyaların
-web sayfasındaki en son değişikliklerle eşleştiği ayrıca doğrulanmalıdır.
-TYBS üzerinde başvuru yapılmamıştır; danışman/kuruluş onayı alınmış değildir.
+Araştırma önerisi, yürütücünün sağladığı 2026 çağrı duyurusu ve Başvuru İçeriği
+Bilgi Notu temel alınarak düzenlenmiştir. Güncel Word/PDF, tek ana Markdown
+metninden üretilir. Gerçek belge üzerinde hesaplanan kelime/karakter sayıları,
+takvim ağırlıkları ve atıf eşleşmeleri [doğrulama kaydındadır](uygunluk_kontrolu.json).
+Bu kayıt resmî sistem onayı veya destek kararı değildir.
 
-“2209-a_sonuc_raporu_formati.docx” proje sonundaki rapora aittir. Gelecekte
-planlanan işleri tamamlanmış sonuç olarak gösterecek biçimde doldurulmamıştır.
-Başvuru içeriği bilgi notundaki çevrim içi alanlara göre hazırlanmıştır.
-
-## Hazırlanan içerik ve biçim kontrolleri
-
-| Alan | Durum |
+| İçerik şartı | Son revizyonun karşılığı |
 |---|---|
-| Bireysel yürütücü / kapsam | Burak Şanlı; CPU zamanlama bitirme projesi, ekip işletim sistemi kapsamı dahil değil |
-| Bilinen danışman | Prof. Dr. Dursun Akaslan; başvuruya özgü danışman kabulü henüz doğrulanmadı |
-| Özet | 253 kelime; 25–450 kelime aralığına uygun; anahtar kelimeler ayrıca |
-| Bilimsel nitelik | 350 karakter alt sınırını geçiyor; araştırma sorusu, hipotez ve atıflar var |
-| Amaç/hedefler | 350 karakter alt sınırını geçiyor; planlanan ölçülebilir hedefler var |
-| Yöntem | 350 karakter alt sınırını geçiyor; değişkenler, tekrarlar, analiz ve ön çalışma ayrılmış |
-| Takvim | Önerilen 6 ay; beş iş adımı; ağırlıklar 15+20+25+25+15=100 |
-| İş adımı kuralı | Literatür, satın alma, rapor ve paylaşım ayrı birer iş adımı yapılmadı |
-| Risk / olanak / yaygın etki | Metin ve tablolar hazır; gerçek bilgisayar kapasitesi henüz girilmedi |
-| Kaynakça | Metin içi eşleşme var; bibliyografik ve varsa DOI kontrolü henüz tamamlanmadı |
+| Özet 25–450 kelime; bilimsel nitelik, yöntem, yönetim ve etki | Dört unsur özette var; gerçek Word üzerinden sınır kontrolü yapılır. |
+| Bilimsel nitelik, hedef ve yöntem bölümleri en az 350 karakter | Üç alan ayrı ölçülür. |
+| Araştırma sorusu ve gerekçeli yöntem | CFS/EEVDF/sched_ext karşılaştırması, hipotez ve sabit sürüm birincil kaynak atıfları. |
+| Ölçülebilir hedefler ve takvim | Beş teknik adım, planlanan altı ay, katkı ağırlıkları toplamı yüzde 100. |
+| Literatür, rapor, paylaşım, satın almanın ayrı adım olmaması | Bu işler ilgili teknik adımlara dahil. |
+| Bağımlı/bağımsız değişkenler, analiz ve ön çalışma | İş yükü hücreleri ve ölçütleri ayrılmış; önceki veriler gelecekteki deney sayılmıyor. |
+| B planında yöntem değişikliğinin açıklanması | Karar haftası, yapılandırılmış konuk ve yazılımsal emülasyon, kiplerin ayrılması ve takvim etkisi açık. |
+| Mevcut araştırma olanakları | Kullanıcının doğruladığı işlemci/RAM ve başarılı yerel test; hedef VM tahsisi plan olarak ayrılmış. |
+| Yaygın etki | Somut teknik/eğitim/açık araştırma çıktıları kategori tablosunda. |
+| Kaynakların metinde kullanılması | Dört kaynak da metin içi atıflarla eşleşiyor. |
+| Görsellerin uygun türü | İki PNG ayrıca indirilip sisteme yüklenebilir. |
 
-Sayılar planlanan deney hedefleridir; kabul garantisi veya tamamlanmış faaliyet
-olarak sunulmaz. İki haftalık ön çalışma ile altı aylık proje planı ayrıdır.
-Bilimsel değerlendirme ağırlıkları çağrı 5.2.1'e göre 35/25/20/20'dir.
+Ulusal strateji öncelik eşleştirmesi veya ek puan avantajı talep edilmiş bir
+sonuç olarak sunulmamaktadır. İlgili alan/beyan sistemde seçilecekse 12. Kalkınma
+Planı ve 2030 stratejisiyle ilişkinin gerekçesi ayrıca doğrulanmalıdır.
 
-## Bütçe ve olanaklar
+## Araştırma kaynağı doğrulaması
 
-Yürütücü, mevcut bilgisayar ve üniversite olanaklarıyla çalışmayı tercih etmiştir.
-Şu an yeni ekipman, ücretli hizmet, seyahat veya sarf gideri öngörülmemektedir;
-planlanan ek harcama 0 TL'dir. Bütçe üst sınırı bu çağrı PDF'inde sayı olarak
-verilmemiştir; program sayfasına yönlendirilmiştir. Sistem ve programın sıfır
-bütçeli başvuruya izin verdiği doğrulanmadan “0 TL destek talebi onaylıdır” denmez.
-Sırf destek almak için gereksiz gider oluşturulmaz. Gereksinim değişirse kalem,
-gerekçe, gerçek fiyat ve uygunluk başvuru kapanmadan kesinleştirilir.
+Mevcut kaynak: yürütücünün bildirdiği i7-12650H işlemci, yaklaşık 15,7 GiB RAM
+ve Ubuntu/WSL geliştirme ortamı. Paylaşılan yerel çıktı, C derlemesinin ve 13 test
+metodunun tamamlandığını göstermektedir. Kaynakta belirtilmeyen disk kapasitesi,
+misafir çekirdek desteği, iç içe hızlandırma veya kurum laboratuvarı varsayılmamıştır.
+Bunlar ilk teknik iş adımındaki uygulanabilirlik kontrolleridir.
 
-Çağrı 2.2'ye göre kapanış sonrası talep bütçesi değiştirilemez. Konferans katılımı,
-yayın ve patent giderleri çağrı 2.1.2 uyarınca bütçeye dahil edilemez.
-Araştırma olanakları için işlemci modeli, RAM, disk/VM kapasitesi ve gerçekten
-kullanılacak kurum olanakları yürütücü/danışman tarafından tamamlanmalıdır.
+İlk Debian ortamındaki deney kayıtları ve yeni yerel test birbirinden ayrılmıştır.
+Yerel testin geçmesi, çekirdeğe özel politika yüklendiğini veya performans
+kazancı elde edildiğini kanıtlamaz.
 
-## Uygunluk ve onay — teyit edilmemiş beyanlar
+## Kaynakça ve editör kontrolü
 
-- Kayıtlı ve uygun öğrenci statüsü; açık öğretim/hazırlık kısıtı (4.1.1 ve dipnot).
-- ARBİS kaydının ve iletişim bilgilerinin güncel olması (4.1.2).
-- Aynı dönem başka başvuru ve devam eden 2209-A/B projesi kısıtı (4.1.4).
-- Aynı proje için daha önce TÜBİTAK desteği alınmamış olması (4.1.5).
-- Danışmanın güncel YÖK/ARBİS bilgileri ve bu dönem en fazla beş 2209-A projesi
-  sınırı (4.1.7 ve 4.3.3). Bu limitte boş yeri olduğu varsayılmamıştır.
-- Etik onay/muafiyet gerekliliği kurum ve değerlendirme sürecine göre ele alınır;
-  gerekli olmadığına dair belge veya karar uydurulmamıştır (5.3.1).
+Kaynak sürümleri, okunan belgeler ve erişim tarihleri [kaynak kaydında](kaynak_dogrulama.md)
+bulunur. İncelenen teknik kaynaklarda sunulmayan DOI numarası uydurulmamıştır.
+TÜBİTAK'ın bağlantılı bibliyografik düzenleme sayfasına erişim engeli vardır;
+o sayfanın güncel gösterimi bağımsız doğrulanmış sayılmaz. TYBS'nin kaynakça
+adımında istenen biçim ve alanlar son gönderimden önce karşılaştırılmalıdır.
 
-## Üretken yapay zekâ kullanımına ilişkin kontrol
+Metin, tablolar, listeler ve görseller [aktarım rehberine](tybs_aktarim_rehberi.md)
+göre aktarılmalı; son ön izlemede alanların boşalmadığı, tabloların taşmadığı,
+özel karakterlerin ve görsellerin doğru çıktığı kontrol edilmelidir.
 
-Çağrının 8.4 ve 8.5 maddeleri ÜYZ kullanım rehberine uyum, doğru beyan ve
-akademik danışmanın kontrolünü gerektirir. Taslak beyanın olgusal temeli:
-metin taslağı oluşturma/düzenleme, kod önerileri, deney otomasyonu ve grafik
-üretimi için ÜYZ destekli araçlardan yararlanılmıştır. Araç kullanımı danışmana
-bildirilmeli; içerik, kaynaklar, kod ve analiz yürütücü/danışman tarafından
-kontrol edilmelidir. Bu kontrolün tamamlandığı veya rehberin tüm hükümlerinin
-okunduğu iddia edilmemektedir. Güncel ÜYZ rehberi ve sistemin beyan alanı
-incelenerek doğru kapsamda son beyan hazırlanmalıdır.
+## Bütçe ve uygunluk beyanları
 
-## TYBS işlem sırası
+Yürütücü mevcut olanaklarla çalışmayı tercih etmiştir; yeni gider öngörüsü 0 TL'dir.
+Bu tercih, programın/sistemin sıfır bütçeli başvuruyu kabul ettiği anlamına gelmez.
+Bu idari uygunluk kontrolü henüz doğrulanmamıştır. Gereksiz maliyet kalemi
+oluşturulmaz. Bütçe üst sınırı çağrı PDF'inde tutar olarak verilmemiştir;
+program sayfasındaki güncel bilgi esas alınır. Çağrıya göre bütçe kapanıştan
+sonra değiştirilemez; konferans katılımı, yayın ve patent giderleri bütçeye alınmaz.
 
-1. Yürütücü ARBİS bilgilerinin ve uygunluğunun kontrolü; TYBS oturumunun açılması.
-2. Bireysel proje, başlık, alan ve danışman bilgilerinin girilmesi.
-3. Öneri metninin ilgili alanlara aktarılması; takvim, kaynakça ve bütçenin tamamlanması.
-4. Bilgi notuna göre görsellerin resim yükleme, tabloların tablo araçlarıyla
-   eklenmesi; proje ön izlemesinde tüm sayfa/metinlerin kontrolü.
-5. Yürütücünün doğru bilgi ve yükümlülük beyanlarını gözden geçirip son onayı.
-6. Akademik danışmanın TYBS onayı; iade olursa düzeltip yeniden sunma.
-7. Kuruluş yetkilisinin e-imzası ve sistemde geçerli başvuru durumunun kontrolü.
+Aşağıdaki kişisel/kurumsal beyanlar belge hazırlayarak doğrulanmış olmaz:
 
-Çağrı 4.3.4.2'ye göre kuruluş yetkilisinin imzasından sonra başvuru geçerli
-kabul edilir; yalnız taslak kaydetmek veya öğrenci onayı tüm süreci tamamlamaz.
-Çağrı, son gün 17.30 kapanışını belirtmektedir; gün/ay program sayfasına
-bırakılmıştır. Burada son gün için bağımsız bir tarih uydurulmamıştır.
+- Uygun ve kayıtlı öğrenci statüsü, ARBİS kaydının tamamlanması/güncelliği.
+- Aynı dönemde başka başvuru veya devam eden 2209-A/B projesi kısıtları.
+- Aynı proje için önceki TÜBİTAK desteği bulunmaması.
+- Danışmanın güncel YÖK/ARBİS bilgileri, danışmanlığı kabulü ve çağrıdaki en fazla
+  beş proje sınırına uygunluğu.
+- Gerekli görülürse kurum/etik izin veya muafiyet süreçleri.
+
+## ÜYZ kullanımı ve sorumluluk
+
+Çağrı 8.4–8.5 hükümlerine göre üretken yapay zekâ kullanım rehberi, doğru kullanım
+beyanı ve danışman kontrolü esas alınmalıdır. Bu projede metin düzenleme, kod
+önerileri, deney otomasyonu ve grafik üretiminde ÜYZ destekli araçlardan
+yararlanılmıştır. Yürütücü ve danışman kaynakları, hesaplamaları ve içeriği gözden
+geçirmelidir. Güncel rehberin bütün hükümlerinin okunduğu veya bu insan kontrolünün
+zaten tamamlandığı varsayılmaz; sistemin beyan adımı buna göre doğru doldurulur.
+
+## Resmî işlemin tamamlanma ölçütü
+
+TYBS'de son ön izleme → yürütücünün doğruluk/yükümlülük onayı → akademik danışman
+onayı → kuruluş yetkilisinin e-imzası → sistemde geçerli başvuru durumunun kontrolü.
+Çağrı 4.3.4.2'ye göre kuruluş yetkilisi imzası sonrasında başvuru geçerli kabul edilir.
+Bu işlemlerden hiçbiri burada yapılmış olarak raporlanmamaktadır.
+
+Çağrı metni son gün 17.30 kapanışını belirtir; gün/ay program sayfasına
+bırakılmıştır. Bu dosyada doğrulanmamış yeni bir son tarih verilmemiştir.
+Paylaşılan sonuç raporu şablonu ise proje sonundaki rapora aittir; araştırma
+önerisinin yerine doldurulmuş veya gelecekteki sonuçlarla tamamlanmış gösterilmemiştir.

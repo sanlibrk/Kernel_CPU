@@ -106,4 +106,4 @@ make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/mnt/c/Users/sanli/Masaüstü/Kernel_CPU'
 Results: /mnt/c/Users/sanli/Masaüstü/Kernel_CPU/results/week2-20261109-190318-856835
 Tests: 13 passed; 6 model runs; 6 Linux runs, 240 samples.
-sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ 
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$

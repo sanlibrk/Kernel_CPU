@@ -2,7 +2,10 @@
 
 Bu kayıt, yürütücünün paylaştığı [terminal çıktısına](terminal_log.txt) dayanır.
 [Yapılandırılmış özet](record.json), yalnız bu çıktıda görülen sonuçları ve
-daha önce bildirilen kişisel donanım envanterini içerir. Yerel WSL çekirdek
+daha önce bildirilen kişisel donanım envanterini içerir. Arşiv kopyasında satır
+sonları LF biçimine dönüştürülmüş ve satır sonu boşlukları temizlenmiştir; komut
+ve sonuç içerikleri değiştirilmemiştir. Gelen özgün dosyanın ve arşiv kopyasının
+ayrı SHA-256 değerleri özet kaydında saklanır. Yerel WSL çekirdek
 sürümü bu kayıtta bulunmadığından eski bulut çekirdeği sürümü kullanılmamıştır.
 
 - C programları önceden derlenmiştir; `make` güncel hedef bulunduğunu bildirmiştir.

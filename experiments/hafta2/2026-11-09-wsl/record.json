@@ -44,5 +44,7 @@
   },
   "custom_kernel_policy_loaded": false,
   "source_file": "terminal_log.txt",
-  "source_sha256": "21dff1f0f56de9595a7a380eb30069c758f3944b5a9d63855006d460f20f732d"
+  "source_sha256": "c6889ff04431b296ab3009e7158784e1de6c849043bd48281dc1b31e8766035b",
+  "received_upload_sha256": "21dff1f0f56de9595a7a380eb30069c758f3944b5a9d63855006d460f20f732d",
+  "transcript_normalization": "Satır sonları LF biçimine dönüştürüldü; satır sonundaki boşluklar temizlendi. Komut ve sonuç içeriği korunmuştur."
 }

@@ -19,8 +19,10 @@ Bu kayıt resmî sistem onayı veya destek kararı değildir.
 | B planında yöntem değişikliğinin açıklanması | Karar haftası, yapılandırılmış konuk ve yazılımsal emülasyon, kiplerin ayrılması ve takvim etkisi açık. |
 | Mevcut araştırma olanakları | Kullanıcının doğruladığı işlemci/RAM ve başarılı yerel test; hedef VM tahsisi plan olarak ayrılmış. |
 | Yaygın etki | Somut teknik/eğitim/açık araştırma çıktıları kategori tablosunda. |
-| Kaynakların metinde kullanılması | Dört kaynak da metin içi atıflarla eşleşiyor. |
-| Görsellerin uygun türü | İki PNG ayrıca indirilip sisteme yüklenebilir. |
+| Kaynakların metinde kullanılması | Akademik kaynak ve beş çekirdek kaydı metin içi atıflarla eşleşir; çok yazarlı makalede “vd.”, kaynakçada tam yazar listesi kullanılır. |
+| Görsellerin uygun türü | Üç PNG ayrıca indirilip sisteme yüklenebilir; akışın SVG/DOT kaynakları da saklanır. |
+| Paylaşılan örneklerin Word düzeni | Logo içeren kapak, Arial 9 gövde yazısı, çerçeveli alanlar, beş sütunlu iş-zaman ve üç sütunlu risk çizelgesi. |
+| Bütçe tablosu | Sarf, demirbaş, hizmet, ulaşım ve toplam ayrı ayrı 0 TL; sisteme uygunluk kontrolü ayrıca yapılır. |
 
 Ulusal strateji öncelik eşleştirmesi veya ek puan avantajı talep edilmiş bir
 sonuç olarak sunulmamaktadır. İlgili alan/beyan sistemde seçilecekse 12. Kalkınma

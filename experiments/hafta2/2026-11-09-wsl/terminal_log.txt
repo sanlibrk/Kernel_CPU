@@ -1,0 +1,109 @@
+PS C:\Users\sanli\Masaüstü\Kernel_CPU> wsl -d Ubuntu
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ cd '/mnt/c/Users/sanli/Masaüstü/Kernel_CPU'
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ make
+make: Nothing to be done for 'all'.
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ make test
+python3 -m unittest discover -s tests -v
+test_invalid_measurement_options_rejected (test_scheduling.LinuxBaselineTests.test_invalid_measurement_options_rejected) ... ok
+test_real_measurements_with_and_without_workers (test_scheduling.LinuxBaselineTests.test_real_measurements_with_and_without_workers) ... ok
+test_aging_bypasses_large_interactive_budget (test_scheduling.SimulationTests.test_aging_bypasses_large_interactive_budget) ... ok
+test_background_only_matches_rr (test_scheduling.SimulationTests.test_background_only_matches_rr) ... ok
+test_budget_gives_background_cpu_under_interactive_pressure (test_scheduling.SimulationTests.test_budget_gives_background_cpu_under_interactive_pressure) ... ok
+test_input_order_does_not_choose_priority (test_scheduling.SimulationTests.test_input_order_does_not_choose_priority) ... ok
+test_interactive_preference_in_controlled_case (test_scheduling.SimulationTests.test_interactive_preference_in_controlled_case) ... ok
+test_invalid_options_rejected (test_scheduling.SimulationTests.test_invalid_options_rejected) ... ok
+test_invalid_workloads_rejected (test_scheduling.SimulationTests.test_invalid_workloads_rejected) ... ok
+test_known_round_robin (test_scheduling.SimulationTests.test_known_round_robin) ... ok
+test_no_artificial_idle_when_only_interactive_tasks (test_scheduling.SimulationTests.test_no_artificial_idle_when_only_interactive_tasks) ... ok
+test_randomized_accounting_and_all_tasks_complete (test_scheduling.SimulationTests.test_randomized_accounting_and_all_tasks_complete) ... ok
+test_single_task_and_initial_idle (test_scheduling.SimulationTests.test_single_task_and_initial_idle) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.475s
+
+OK
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ cat workloads/mixed.csv
+id,class,arrival_ms,burst_ms
+1,background,0,120
+2,background,0,120
+3,background,0,120
+4,interactive,5,2
+5,interactive,15,2
+6,interactive,25,2
+7,interactive,35,2
+8,interactive,45,2
+9,interactive,55,2
+10,interactive,65,2
+11,interactive,75,2
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/scheduler_sim --policy rr workloads/mixed.csv
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,120,0,368,0,248,368
+2,background,0,120,4,372,4,252,372
+3,background,0,120,8,376,8,256,376
+4,interactive,5,2,16,18,11,11,13
+5,interactive,15,2,26,28,11,11,13
+6,interactive,25,2,36,38,11,11,13
+7,interactive,35,2,46,48,11,11,13
+8,interactive,45,2,56,58,11,11,13
+9,interactive,55,2,66,68,11,11,13
+10,interactive,65,2,76,78,11,11,13
+11,interactive,75,2,86,88,11,11,13
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/scheduler_sim --policy interactive --quantum 4 --window 20 --budget 8 --aging 20 workloads/mixed.csv
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,120,0,368,0,248,368
+2,background,0,120,4,372,4,252,372
+3,background,0,120,10,376,10,256,376
+4,interactive,5,2,8,10,3,3,5
+5,interactive,15,2,18,20,3,3,5
+6,interactive,25,2,28,30,3,3,5
+7,interactive,35,2,38,40,3,3,5
+8,interactive,45,2,48,50,3,3,5
+9,interactive,55,2,58,60,3,3,5
+10,interactive,65,2,68,70,3,3,5
+11,interactive,75,2,78,80,3,3,5
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/scheduler_sim --policy rr workloads/interactive_pressure.csv
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,80,0,472,0,392,472
+2,background,0,80,4,476,4,396,476
+3,background,0,80,8,480,8,400,480
+4,interactive,0,20,12,244,12,224,244
+5,interactive,2,20,16,256,14,234,254
+6,interactive,4,20,20,264,16,240,260
+7,interactive,6,20,28,272,22,246,266
+8,interactive,8,20,32,276,24,248,268
+9,interactive,10,20,40,284,30,254,274
+10,interactive,12,20,44,288,32,256,276
+11,interactive,14,20,52,296,38,262,282
+12,interactive,16,20,56,300,40,264,284
+13,interactive,18,20,64,304,46,266,286
+14,interactive,20,20,68,308,48,268,288
+15,interactive,22,20,76,312,54,270,290
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/scheduler_sim --policy interactive workloads/interactive_pressure.csv
+id,class,arrival_ms,burst_ms,start_ms,finish_ms,response_ms,waiting_ms,turnaround_ms
+1,background,0,80,8,472,8,392,472
+2,background,0,80,12,476,12,396,476
+3,background,0,80,16,480,16,400,480
+4,interactive,0,20,0,326,0,306,326
+5,interactive,2,20,4,332,2,310,330
+6,interactive,4,20,20,267,16,243,263
+7,interactive,6,20,28,353,22,327,347
+8,interactive,8,20,29,367,21,339,359
+9,interactive,10,20,31,378,21,348,368
+10,interactive,12,20,32,388,20,356,376
+11,interactive,14,20,37,363,23,329,349
+12,interactive,16,20,38,341,22,305,325
+13,interactive,18,20,43,287,25,249,269
+14,interactive,20,20,47,291,27,251,271
+15,interactive,22,20,55,325,33,283,303
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/linux_baseline --workers 0 --samples 40 | python3 -c 'import json,sys; d=json.load(sys.stdin); print({k:d[k] for k in ("workers","sample_count","wake_mean_ms","wake_p95_ms","wake_max_ms")})'
+{'workers': 0, 'sample_count': 40, 'wake_mean_ms': 0.30167, 'wake_p95_ms': 0.571509, 'wake_max_ms': 0.670742}
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ ./build/linux_baseline --workers 2 --samples 40 | python3 -c 'import json,sys; d=json.load(sys.stdin); print({k:d[k] for k in ("workers","sample_count","wake_mean_ms","wake_p95_ms","wake_max_ms")})'
+{'workers': 2, 'sample_count': 40, 'wake_mean_ms': 1.130421, 'wake_p95_ms': 3.98489, 'wake_max_ms': 5.537544}
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ make experiment
+python3 scripts/run_experiments.py
+make[1]: Entering directory '/mnt/c/Users/sanli/Masaüstü/Kernel_CPU'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/mnt/c/Users/sanli/Masaüstü/Kernel_CPU'
+Results: /mnt/c/Users/sanli/Masaüstü/Kernel_CPU/results/week2-20261109-190318-856835
+Tests: 13 passed; 6 model runs; 6 Linux runs, 240 samples.
+sanli@Cyborg:/mnt/c/Users/sanli/Masaüstü/Kernel_CPU$ 

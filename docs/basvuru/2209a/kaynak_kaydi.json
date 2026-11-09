@@ -1,5 +1,25 @@
 [
   {
+    "citation": "Goel vd., 2002",
+    "title": "Supporting Time-Sensitive Applications on a Commodity OS",
+    "authors": [
+      "Ashvin Goel",
+      "Luca Abeni",
+      "Charles Krasic",
+      "Jim Snow",
+      "Jonathan Walpole"
+    ],
+    "year": 2002,
+    "venue": "5th Symposium on Operating Systems Design and Implementation (OSDI 02)",
+    "pages": "165–180",
+    "url": "https://raw.githubusercontent.com/Yodaquette/CS6210_AdvOS_Papers/master/part03_RecoveryAndInternetScaleComputing/02_RealtimeAndMultimedia/01_TimeSensitiveApps.pdf",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "cf8eabcd4caf5ad1aabade97cbd2949cac1a7fd5a9c339af4d589b01764c40d9",
+    "read_scope": "Tam metin; özellikle giriş, uygulama tasarımı ve maliyet değerlendirmesi",
+    "live_publisher_metadata_verified": false,
+    "doi_present_in_inspected_pdf": false
+  },
+  {
     "citation": "Linux Kernel Community, 2024a",
     "title": "CFS Scheduler",
     "version": "v6.12",
@@ -30,5 +50,13 @@
     "url": "https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c",
     "access_date": "2026-11-09",
     "sha256_of_fetched_source": "a5ca4f287f8a04e3a69e4394a8620d395a847fe9947db52ce907148a085748fc"
+  },
+  {
+    "citation": "Linux Kernel Community, 2024e",
+    "title": "Deadline Task Scheduling",
+    "version": "v6.12",
+    "url": "https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-deadline.rst",
+    "access_date": "2026-11-09",
+    "sha256_of_fetched_source": "bc75b3e00e6c8a893a0088d26070cc3aedd472e026d7da99093358550666bb08"
   }
 ]

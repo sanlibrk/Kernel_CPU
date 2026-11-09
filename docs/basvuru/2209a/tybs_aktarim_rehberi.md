@@ -16,11 +16,18 @@ başvurusunun oluşturulduğu, gönderildiği veya onaylandığına ilişkin kay
 | Risk yönetimi | 3.2; izlenecek belirti, B planı ve yöntem/takvim etkisi. |
 | Araştırma olanakları | 3.3; mevcut donanım/yazılım ile planlanan misafirin ayrımı korunur. |
 | Yaygın etki | 4; kategori tablosu. |
-| Diğer konular | 5; mevcut ön çalışma bilgileri. |
-| Ekler | 6 ve ayrı PNG dosyaları. |
+| Bütçe | Word formunda 5; kategori bazında 0 TL talep ve gerekçeleri. Sistemin sıfır bütçeyi kabulü doğrulanır. |
+| Diğer konular | Word formunda 6; mevcut ön çalışma bilgileri ve tarihli sonuçlar. |
+| Ekler | Word formunda 7; ayrı PNG/SVG dosyaları ve kayıt bağlantıları. |
 | Kaynakça | KAYNAKLAR; sistem alanlarına yazar, yıl, başlık, URL ve erişim tarihi aktarılır. |
 
 Güncel metin: [Araştırma önerisi](2209A_Burak_Sanli_Arastirma_Onerisi.md).
+
+Word düzeni yürütücünün paylaştığı örneklerdeki bütçe çizelgesini de içerdiği
+için son bölümlerin numaraları 2026 çevrim içi bilgi notundan farklı olabilir.
+Aktarım bölümün **adına ve içeriğine** göre yapılır. Kapak, Arial 9 gövde yazısı
+ve çerçeveli tablolar Word biçimine aittir; TYBS editöründe aynı görünümün
+kendiliğinden korunacağı varsayılmaz.
 
 ## Editör ve ön izleme
 

@@ -1,20 +1,37 @@
-# Kaynak doğrulama kaydı
+# Kaynak ve atıf kaydı
 
-Başvuru metnindeki teknik karşılaştırmalar, Linux çekirdeğinin resmî kaynak deposunda `v6.12` etiketi altında bulunan aşağıdaki birincil kaynaklara dayanmaktadır. Belgeler 9 Kasım 2026 tarihinde okunmuştur. Sürüm etiketinin yayımlanma tarihi kaynak sayfasında 17 Kasım 2024 olarak doğrulanmıştır.
+**Proje:** Gecikme Odaklı CPU Zamanlama. Erişim tarihi: 9 Kasım 2026.
+Kaynaklar, başvuru metnindeki iddialarla aşağıdaki kapsamda eşleştirilmiştir.
+Başka projelerin bitki bilimi kaynakları bu araştırmaya aktarılmamıştır.
 
-| Atıf | Kaynak ve sabit sürüm bağlantısı | Metinde desteklediği bilgi |
+| Metin içi atıf | Okunan kaynak | Desteklediği bilgi / sınır |
 |---|---|---|
-| Linux Kernel Community, 2024a | [CFS Scheduler](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-design-CFS.rst) | Sanal çalışma zamanı ve adil paylaşım yaklaşımı. |
-| Linux Kernel Community, 2024b | [EEVDF Scheduler](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-eevdf.rst) | Uygunluk, lag ve sanal son teslim zamanı ile görev seçimi. |
-| Linux Kernel Community, 2024c | [Extensible Scheduler Class](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-ext.rst) | BPF ile zamanlama arayüzü; çekirdek yapılandırması, örnekler ve geri dönüş davranışı. |
-| Linux Kernel Community, 2024d | [scx_simple.bpf.c](https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c) | Örnek politikanın ağırlıklı sanal-zaman/FIFO seçenekleri; kuyruk ve sayaç yapıları. |
+| Goel vd., 2002 | *Supporting Time-Sensitive Applications on a Commodity OS*, tam makale; [erişilen kopya](https://raw.githubusercontent.com/Yodaquette/CS6210_AdvOS_Papers/master/part03_RecoveryAndInternetScaleComputing/02_RealtimeAndMultimedia/01_TimeSensitiveApps.pdf) | Timer hassasiyeti, çekirdek kesilebilirliği ve zamanlamanın birlikte değerlendirilmesi; gecikme ile işlem hacmi maliyetinin ayrılması. Eski TSL sonuçları bizim politikamızın güncel kazancı değildir. |
+| Linux Kernel Community, 2024a | [CFS Scheduler, v6.12](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-design-CFS.rst) | Ağırlıklar ve sanal çalışma zamanı üzerinden adil paylaşım. |
+| Linux Kernel Community, 2024b | [EEVDF Scheduler, v6.12](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-eevdf.rst) | Uygunluk, lag ve sanal son teslim zamanı üzerinden seçim. |
+| Linux Kernel Community, 2024c | [Extensible Scheduler Class, v6.12](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-ext.rst) | BPF politika altyapısı, yapılandırma ve geri dönüş davranışı. |
+| Linux Kernel Community, 2024d | [scx_simple.bpf.c, v6.12](https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c) | Örneğin ağırlıklı sanal zaman / ayrıca açılan FIFO seçenekleri. |
+| Linux Kernel Community, 2024e | [Deadline Task Scheduling, v6.12](https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-deadline.rst) | EDF/CBS, runtime/period/deadline ve kabul kontrolü. Bizim tercih bütçemiz aynı gerçek zaman garantisini vermez. |
 
-## Kaynakça yaklaşımı
+## Gösterim ve erişim kapsamı
 
-Başvuru metninde yazar–yıl atıfları ile kaynakça kayıtları eşleştirilmiştir. Kaynaklar resmî teknik dokümantasyon ve kaynak dosyalarıdır. İncelenen kayıtlarda DOI numarası sunulmadığından DOI uydurulmamıştır. Başvuruya sonradan DOI içeren bir yayın eklenirse DOI kaynakça kaydına da eklenmelidir.
+Üç ve daha fazla yazarı bulunan makaleye metin içinde **Goel vd. (2002)** veya
+**(Goel vd., 2002)** biçiminde atıf yapılır. Kaynakçada beş yazar da tam yazılır.
+Kurumsal yazarlı Linux belgelerinde yazar adı `Linux Kernel Community` olarak
+korunur; kuruma gerekçesiz “vd.” eklenmez. Aynı yılın belgeleri a–e ile ayrılır.
 
-TÜBİTAK bilgi notunun bağlantı verdiği bibliyografik düzenleme sayfasına bu çalışma ortamının ağ kısıtı nedeniyle erişilememiştir. Bu nedenle o sayfanın güncel kurallarına yönelik bağımsız çevrim içi doğrulama yapıldığı iddia edilmez. TYBS kaynakça adımındaki alanlar ve gösterim, gönderimden önce kontrol edilmelidir.
+Tam metin dosyalarının SHA-256 değerleri ve erişim adresleri
+[kaynak kaydında](kaynak_kaydi.json) saklanır. Akademik makalenin erişilen PDF'i
+başlık ve yazarları içerir; canlı yayıncı metadata/DOI sayfası bu ortamda ayrıca
+kontrol edilememiştir. Okunan PDF'te DOI bulunmadığından DOI uydurulmamıştır.
+Linux kaynaklarının sabit sürümü v6.12'dir; sürümün yayımlanma tarihi önceki
+kaynak kontrolünde 17 Kasım 2024 olarak doğrulanmıştır.
 
-## İnternet araştırmasının kapsamı
+USENIX/Stanford yayıncı adresleri ve TÜBİTAK'ın bibliyografik düzenleme sayfası
+bu ortamda erişim kısıtına takılmıştır. Bu sayfaların güncel kurallarının veya
+metadata alanlarının bağımsız canlı doğrulandığı iddia edilmez. Gönderim öncesi
+TYBS kaynakça adımının istenen gösterimi ve varsa DOI bilgileri kontrol edilir.
 
-GitHub üzerinden erişilebilen üçüncü taraf bir başvuru aracı dizini de incelenmiştir; bu kaynakta kabul edilmiş örnek başvurular bulunmadığı belirtildiği için bilimsel kanıt veya resmî şablon olarak kullanılmamıştır. Başka projelerin metinleri başvuruya kopyalanmamıştır. Bölüm düzeninde yürütücünün sağladığı 2026 bilgi notu esas alınmıştır.
+Kaynak sayısı kapsamlı veya sistematik literatür taraması yapıldığı anlamına
+gelmez. Yenilik iddiası “ilk algoritma” değildir; tanımlı görev sınıflarında
+kural bileşimini uygulamak ve katkılarını kontrollü deneylerle açıklamaktır.

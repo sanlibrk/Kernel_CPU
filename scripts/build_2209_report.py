@@ -287,7 +287,7 @@ def build_word(metadata, parts, destination):
             format_text(paragraph, "Tarih : ____________________  (İmza tarihi)", size=10)
 
     props = document.core_properties
-    props.title = "CPU Zamanlama — 2209-A Biçiminde Proje Raporu"
+    props.title = metadata["Projenin konusu"] + " — Proje Raporu"
     props.subject = f"Mevcut çalışma aşaması — {metadata['Rapor kapsam tarihi']}"
     props.author = metadata["Proje yürütücüsü"]
     props.keywords = "CPU zamanlama; mevcut durum; sonuç raporu şablonu"

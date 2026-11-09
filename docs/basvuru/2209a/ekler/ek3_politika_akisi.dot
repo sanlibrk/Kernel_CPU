@@ -1,0 +1,32 @@
+digraph Policy {
+  graph [fontname="DejaVu Sans", fontsize=12, rankdir=TB, nodesep=0.25, ranksep=0.3, bgcolor="white", pad=0.15, compound=true];
+  node [fontname="DejaVu Sans", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f5f7fa", color="#334155", margin="0.11,0.07"];
+  edge [fontname="DejaVu Sans", fontsize=9, color="#475569", arrowsize=0.65];
+  subgraph cluster_a {
+    label="A. Modelde zaman adımı (1 ms)"; color="#94a3b8";
+    a0 [label="Pencere sınırında bütçeyi yenile;\nyeni görevleri kabul et"];
+    a1 [label="Dilim bitti mi veya özel kipte\netkileşimli görevde bütçe sıfır\nve arka plan hazır mı?", shape=diamond, fillcolor="#e8eef5"];
+    aq [label="Çalışanı kuyruğun sonuna koy;\nson bekleme başlangıcını güncelle"];
+    a2 [label="Çalışan görev var mı?",shape=diamond,fillcolor="#e8eef5"];
+    a3 [label="B bölümünden yeni görev seç"];
+    a4 [label="Görev varsa 1 ms çalıştır; yoksa 1 ms boş ilerle.\nCPU, dilim ve bütçe sayaçlarını güncelle."];
+    a5 [label="Tamamlanan görevin bitişini kaydet;\ngörevler bitmediyse sonraki adıma geç"];
+    a0 -> a1; a1 -> aq [label="Evet"]; a1 -> a2 [label="Hayır"]; aq -> a2;
+    a2 -> a3 [label="Hayır"]; a2 -> a4 [label="Evet"]; a3 -> a4; a4 -> a5;
+  }
+  subgraph cluster_b {
+    label="B. Seçim anındaki politika kuralı"; color="#94a3b8";
+    b0 [label="Round Robin kipi mi?",shape=diamond,fillcolor="#e8eef5"];
+    bf [label="Hazır kuyruğun ilk görevini seç"];
+    b1 [label="Yaşlandırma eşiğini geçen\nhazır görev var mı?",shape=diamond,fillcolor="#e8eef5"];
+    bo [label="Son bekleme başlangıcı en eski görevi seç;\neşitlikte kuyruk sıra numarasını kullan"];
+    b2 [label="Bütçe pozitif mi veya\narka plan sınıfı boş mu?",shape=diamond,fillcolor="#e8eef5"];
+    bi [label="Etkileşimli sınıfı tercih et"];
+    bb [label="Arka plan sınıfını tercih et"];
+    be [label="Tercih edilen sınıfın ilkini seç;\nsınıf boşsa hazır kuyruğun ilkine dön"];
+    b0 -> bf [label="Evet"]; b0 -> b1 [label="Hayır"];
+    b1 -> bo [label="Evet"]; b1 -> b2 [label="Hayır"];
+    b2 -> bi [label="Evet"]; b2 -> bb [label="Hayır"]; bi -> be; bb -> be;
+  }
+  {rank=same; a0; b0;}
+}

@@ -1,10 +1,10 @@
-# ARAŞTIRMA ÖNERİSİ
+# ARAŞTIRMA ÖNERİSİ FORMU
 
-## GENEL BİLGİLER
+## A. GENEL BİLGİLER
 
 | Alan | Bilgi |
 |---|---|
-| Proje başlığı | Etkileşimli Görevlerde Yanıt Süresini İyileştirmeye Yönelik Bütçe ve Yaşlandırma Tabanlı CPU Zamanlama Politikasının Geliştirilmesi |
+| Proje başlığı | Gecikme Odaklı CPU Zamanlama |
 | Proje yürütücüsü | Burak Şanlı |
 | Üniversite / bölüm | Harran Üniversitesi / Bilgisayar Mühendisliği |
 | Akademik danışman | Prof. Dr. Dursun Akaslan |
@@ -38,6 +38,32 @@ Bu projenin ele aldığı somut sorun, açıkça belirtilen kısa/periyodik gör
 Araştırma sorusu şöyledir: Sınırlı tercih bütçesi ve yaşlandırma kullanan politika, tanımlı karma yüklerde kısa görevlerin P95 uyanma gecikmesini azaltırken arka plan ilerlemesini ve tamamlanmasını önceden belirlenen sınırlar içinde koruyabilir mi? Araştırma hipotezi, bunun bazı karma yük koşullarında sağlanabileceği; yoğun talepte ise bütçe, ilk yanıt ve toplam bekleme arasında ölçülebilir ödünleşimler oluşacağıdır. Evrensel üstünlük veya literatürde ilk algoritma olma iddiası kurulmamaktadır.
 
 Ön çalışmadaki modelde karışık yükün ortalama ilk yanıtı 11 ms'den 3 ms'ye inerken, yoğun etkileşimli yükte toplam ortalama bekleme 252,667 ms'den 303,833 ms'ye yükselmiştir. Bu karşı örnek, birinci çalışmaya erişim ile bütün işin bitişini birlikte inceleme gereğini somutlaştırmaktadır. Bilimsel katkı; kural bileşiminin gerçek çekirdekte uygulanması, varsayılan davranışla eşleştirilmiş ölçümü, tekil bileşen kontrolleri ve yararlı/zararlı yük koşullarının açıklanmasıdır. İlk sürüm açık görev sınıfları ve tek ölçüm CPU'suyla sınırlıdır; otomatik sınıflandırma, genel çok çekirdek yerleşimi, bellek ve termal yönetim temel hedef değildir.
+
+### Literatür karşılaştırması ve araştırmanın konumu
+
+Zamana duyarlı görevlerin gecikmesi yalnız görev seçimine bağlı değildir. Goel vd. (2002), Time-Sensitive Linux çalışmasında yüksek hassasiyetli zamanlayıcıları, çekirdeğin kesilebilirliğini ve uygun CPU zamanlamasını birlikte ele almış; etkileşimli/zamana duyarlı uygulamalarla işlem hacmi odaklı uygulamaların birlikte değerlendirilmesi gerektiğini göstermiştir. Bu çalışma bizim kullandığımız çekirdek veya politikanın güncel performansını kanıtlamaz. Araştırmada uyanma gecikmesinin saf hazır-kuyruk beklemesi olarak adlandırılmaması ve gecikmenin yanında arka plan ilerlemesinin ölçülmesi bu ayrımı korur (Goel vd., 2002).
+
+Bütçe kullanımı da tek başına yeni bir zamanlama fikri değildir. Linux SCHED_DEADLINE, EDF seçimini Constant Bandwidth Server ile birleştirir; görev çalışma bütçesi, periyot ve son teslim zamanı ile uygun kabul kontrolü üzerinden kaynak yalıtımı sağlar. Bu projedeki sınıf tercihi bütçesi aynı garantiye sahip değildir: yaşlandırma ve tek sınıfın hazır olması istisnaları vardır, görev başına son teslim zamanı veya kabul kontrolüne dayalı süre garantisi verilmez (Linux Kernel Community, 2024e).
+
+Çizelge 1. İncelenen yaklaşımlarla araştırmanın kapsam karşılaştırması.
+
+| Yaklaşım / kaynak | Temel yaklaşım | Bu projedeki karşılığı ve sınırı |
+|---|---|---|
+| Time-Sensitive Linux (Goel vd., 2002) | Zamanlama, timer hassasiyeti ve çekirdek kesilebilirliğinin birlikte ele alınması | Uyanma ölçümünün birden fazla sistem etkisini kapsadığı kabul edilir. TSL'nin sonuçları bizim politikamızın kazancı olarak kullanılmaz. |
+| CFS ve EEVDF (Linux Kernel Community, 2024a; Linux Kernel Community, 2024b) | Ağırlıklar, sanal zaman, uygunluk ve sanal son teslim zamanı | Gerçek deneyin varsayılan adil sınıfı bir karşılaştırma koludur. Mevcut RR modeli bu algoritmaların benzetimi değildir. |
+| EDF/CBS (Linux Kernel Community, 2024e) | Görev bütçesi, periyot, son teslim zamanı ve kabul kontrolü | Bizim sınıf tercihi bütçemiz kaynak rezervasyonu veya gerçek zaman garantisi sayılmaz. SCHED_DEADLINE bu projede uygulanmış karşılaştırma kolu değildir. |
+| sched_ext ve scx_simple (Linux Kernel Community, 2024c; Linux Kernel Community, 2024d) | BPF ile politika geliştirme altyapısı ve örnek seçim kuralları | Aynı altyapıdaki FIFO ve bileşen çıkarma kontrolleri karar kurallarını incelemeye yardım eder. Altyapı başlı başına yeni algoritma değildir. |
+| Önerilen çalışma | Sınırlı sınıf tercihi bütçesi, bekleme yaşlandırması ve kontrollü eşleştirilmiş deney | Açık iki sınıf ve tek ölçüm CPU'sunda yararlı/zararlı koşullar belirlenir; evrensel üstünlük veya literatürde ilk olma iddiası kurulmaz. |
+
+Bu kaynakların hiçbiri bütün literatürün tarandığı anlamına gelmez. Projenin savunulabilir katkısı, bilinen mekanizmaların bu tanımlı görev kümesindeki birleşimini açıklamak, uygun çekirdekte uygulamak ve bileşenleri ayrı ayrı sınayan yeniden üretilebilir bir değerlendirme sunmaktır. Parametreler, olumsuz yük koşulları ve uygulama maliyeti açıkça raporlanacaktır. Böylece teknik uygulama ile araştırma sorusu birbirine bağlanır.
+
+### Araştırma sorusu ve sınanacak hipotezler
+
+H1: Birincil seyrek karma koşulda özel politika, varsayılan sınıfa göre kısa görevlerin koşu bazındaki P95 uyanma gecikmesini azaltabilir; arka plan ilerleme sınırı aynı anda sağlanmalıdır.
+
+H2: Yoğun etkileşimli talepte ilk yanıt, toplam bekleme ve arka plan ilerlemesi farklı yönlerde değişebilir. Ön çalışmadaki olumsuz örnek bu hipotezi araştırmaya gerekçe sağlar, gerçek çekirdek sonucunu önceden belirlemez.
+
+H3: Bütçe ve yaşlandırma bileşenlerinden birinin kaldırılması, tam politikaya göre gecikme–ilerleme dengesini değiştirebilir. Etkinin yönü önceden olumlu kabul edilmez; bileşenlerin katkısı eşleştirilmiş ek koşularla incelenir.
 
 ## 1.2. Amaç ve Hedefler
 
@@ -77,9 +103,83 @@ Politika 4 ms başlangıç zaman dilimi, 20 ms sabit duvar zamanı penceresi, 8 
 
 Enqueue, dispatch ve çalışma/durma olaylarında durum güncellenecektir. Çekirdek uygulaması her milisaniyede kullanıcı alanında dönen bir simülasyon döngüsü olmayacaktır. Önce yaşlandırma eşiğini geçen aday; aksi halde bütçeye göre sınıf ve FIFO sıra numarası seçilecektir. Yaşlandırma son beklemeye girişten itibaren değerlendirilir; kesin gecikme üst sınırı oluşturmaz. Başka sınıfta iş yoksa CPU boş bırakılmaz; bütçenin katı kota olmadığı ve yaşlandırma istisnaları açıkça tanımlanır. Gerçek dilim sonlandırma ve bütçe/pencere sınırı davranışının modelden ayrıldığı noktalar önce modele eklenip test edilecek, eşdeğer davranış varsayılmayacaktır. Her seçimin maliyeti ve sayaç/izleme etkisi ölçüm kapsamındadır.
 
+### Başlangıç parametreleri ve gerekçeleri
+
+Başlangıç yapılandırması, ön çalışmada uygulanmış ve küçük örneklerle davranışı izlenebilmiş 4 ms zaman dilimi, 20 ms sabit pencere, 8 ms etkileşimli tercih bütçesi ve 20 ms yaşlandırma eşiğidir. Bu değerler literatürden çıkarılmış optimum ayarlar veya gerçek zaman garantileri değildir. Önceki deneyle süreklilik sağlayan, kuralların ve ödünleşimlerin sınanabileceği bir başlangıç noktası olarak seçilmiştir.
+
+Çizelge 2. Başlangıç parametreleri ve tasarım gerekçeleri.
+
+| Parametre | Başlangıç | Tasarım gerekçesi ve sınır |
+|---|---:|---|
+| Zaman dilimi | 4 ms | Modeldeki 2 ms kısa CPU ihtiyacının tek dilimde tamamlanabilmesine, 80–120 ms uzun görevlerin ise yeniden seçime girmesine olanak verir. Dilimi küçültmenin gecikme ve seçim/bağlam değiştirme maliyeti üzerindeki etkisi ayrıca sınanacaktır; modelde bağlam değiştirme maliyeti sıfırdır. |
+| Sabit pencere | 20 ms | Seyrek karma yükün birincil 20 ms kısa iş periyoduyla ilişkilendirilebilen, bütçe yenilenmesinin takip edilebildiği zaman ölçeğidir. Ana deneyde diğer geliş periyotları da sınanacaktır; bu pencere bütün yüklerin optimumu sayılmaz. |
+| Etkileşimli tercih bütçesi | 8 ms | Pencereye oranı 8/20 = %40'tır; iki adet 4 ms dilime eşdeğer bir tercih denemesi sunar. Bu oran sınıfın garantili CPU payı değildir. Bütçe, belirli kurallarda sınıf tercihini değiştirir; yaşlandırma üstünlüğü ve diğer sınıfta hazır görev bulunmaması nedeniyle katı kota uygulanmaz. Kullanılmayan bütçe sonraki pencereye devretmez. |
+| Yaşlandırma eşiği | 20 ms | Yeniden kuyruğa girişten beri bir pencere kadar bekleyen görevin seçimde öne alınmasını incelemek için başlangıç eşiğidir. İki sınıfa da uygulanır. Yalnız seçim anında değerlendirilir; her görevin 20 ms içinde çalışacağını garanti etmez. |
+
+Dört parametrenin anlamı çekirdek uygulamasında olay ve muhasebe düzeyinde ayrıca doğrulanacaktır. Modelin her 1 ms adımında verdiği kararların gerçek çekirdekte aynı zaman hassasiyetiyle gerçekleştiği varsayılmayacaktır. Sabit pencerenin sınırı duvar saatinden, tüketilen bütçe ise görevin gerçekleşen CPU çalışma süresinden türetilecektir.
+
+### Başarı hedeflerinin işlemsel gerekçesi
+
+P95 uyanma gecikmesinde en az %20 azalma, küçük ve ortam gürültüsüne duyarlı farkların ötesinde araştırmaya değer bir iyileşme hedeflemek için belirlenmiş başlangıç mühendislik ölçütüdür. Arka planın toplam ilerleme kaybını %10 içinde tutma hedefi ise gecikme kazancının uzun işler pahasına sınırsız elde edilmesini engelleyen koruyucu bir tasarım sınırıdır. Bu sayılar bir standart, literatürden doğrulanmış evrensel eşik veya alınmış ölçüm sonucu değildir; aynı araştırma sorusunun iki yönünü önceden görünür kılar.
+
+Birincil 20 ms periyotlu karma koşulda P95 kazancı, toplam arka plan ilerleme kaybı ve her işçinin bireysel ilerlemesi birlikte değerlendirilecektir. Hiçbir işçinin gözlem penceresi boyunca tamamen ilerlemesiz kalmaması ek koşuldur. Yaklaşık %95 belirsizlik aralıkları ve mutlak farklar, yüzde hedeflerinin yanında verilecektir; tek bir koşunun eşiği aşması yeterli kanıt sayılmayacaktır. Varsayılan P95 sıfırsa göreli kazanç tanımsız olacağından mutlak fark raporlanacaktır. Yüzde hedeflerine ulaşılamaması araştırmanın geçersiz olduğu anlamına gelmez; hipotezin hangi yük ve parametre koşullarında desteklenmediği bulgu olarak korunacaktır. Ana veri görüldükten sonra eşikler olumlu sonuç elde etmek için değiştirilmeyecektir.
+
+### Parametre pilotu ve seçim kuralı
+
+Parametre seçimi tam faktöriyel bir arama yerine sınırlı, tek faktörlü pilotla yapılacaktır. Pencere 20 ms'de sabit tutulacak; başlangıç ayarı (zaman dilimi, bütçe, yaşlandırma) = (4, 8, 20) ms çevresinde her defasında yalnız bir parametre değiştirilecektir.
+
+Çizelge 3. Tek faktörlü, sınırlı parametre pilotu.
+
+| Yapılandırma | Zaman dilimi (ms) | Bütçe (ms) | Yaşlandırma (ms) |
+|---|---:|---:|---:|
+| P0 — başlangıç | 4 | 8 | 20 |
+| P1 | 2 | 8 | 20 |
+| P2 | 8 | 8 | 20 |
+| P3 | 4 | 4 | 20 |
+| P4 | 4 | 12 | 20 |
+| P5 | 4 | 8 | 10 |
+| P6 | 4 | 8 | 40 |
+
+Bu yedi farklı ayar önce üç mevcut model yükünde işlevsel olarak taranacaktır: 7 × 3 = 21 deterministik model çalıştırması. Aynı girdinin tekrarı istatistiksel yeni deney sayılmayacaktır. Model taraması son görev bitişi, CPU muhasebesi, kuyruk ilerlemesi ve olumsuz yük davranışının kontrolünü amaçlar; çekirdekte optimum parametreyi kanıtlamaz.
+
+Çekirdek uygulaması çalışır hâle geldikten sonra 20 ms ve 2 ms kısa iş periyotlu iki karma yükte, yapılandırma başına iki eşleştirilmiş blok planlanır. Her blok aynı yükün varsayılan ve özel politikayla çalıştırılmasını içerir: 7 yapılandırma × 2 yük × 2 blok × 2 politika = en fazla 56 gerçek pilot koşu. Her yapılandırmanın varsayılan koşusu yeniden alınır; tek bir eski temel ölçüm bütün ayarlar için bağımsız karşılaştırma gibi çoğaltılmaz. İki blok kararlı bir etki veya istatistiksel güç iddiasına yeterli sayılmayacak; pilot seçimi yalnız uygulanabilirlik ve kaba parametre elemesi için kullanılacaktır.
+
+Seçim sırası ana deneyden önce kaydedilecektir: önce işlevsel doğruluğu ve görev ilerlemesini bozan ayarlar elenir; ardından her işçinin ilerlediği ve birincil 20 ms hücresinde iki blokta da arka plan ilerleme kaybının %10 sınırını aşmadığı ayarlar değerlendirilir. İki yükteki maliyet göstergeleri ayrıca kaydedilir; daha yoğun hücrenin kaybı gizlenmez. Uygun ayarlarda, birincil pilot hücresinin iki koşu bazındaki P95 göreli değişiminin medyanı kullanılır. Başlangıç ayarı koruyucu koşulları sağlıyorsa korunur. Başlangıç ayarı uygun değilse, koruyucu koşulları sağlayan adaylar içinde birincil hücrede iki blokta da gecikme değişiminin yönü olumlu olan ve medyan P95 göreli iyileşmesi en yüksek olan ayar seçilir. Hiçbir aday bu koşulları sağlamazsa bir ayar başarılı ilan edilmez. Eşit medyan iyileşmede başlangıç ayarından farklı parametre sayısı, ardından parametrelerin başlangıca göre normalize mutlak uzaklıkları toplamı kullanılır; yine eşitse tabloda önce gelen ayar seçilir. Varsayılan P95 sıfır olduğunda göreli sıralama yerine mutlak fark kullanılır ve başlangıç ayarı değiştirilmeden fizibilite kaydı tutulur. Hiçbir ayar koruyucu koşulları sağlamazsa rastgele en iyi görünen sayı seçilmeyecek; kural sorunu giderilecek veya hipotezin yetersizliği raporlanacaktır. Pilot girdileri, tohumları ve kayıtları ana değerlendirmeden ayrılacak; seçilen tek yapılandırma ana 120 koşu ve ek 60 koşu başlamadan sabitlenecektir. Pilotlar 180 ana/ikincil koşuya dahil değildir ve ana deney sonuçlarıyla tekrar ayar yapılmayacaktır.
+
+Bu plan, parametre etkileşimlerini tam taramaz; tek faktörlü yapının bu sınırı raporlanacaktır. Buradaki 21 model ve en fazla 56 gerçek pilot, yeni planlanan kapsamdır; yapılmış veya başarılı bitmiş deney sayısı değildir.
+
+### Mevcut referans modelin sözde kodu ve akışı
+
+Aşağıdaki sözde kod, mevcut C modelinin 1 ms adımlı davranışını açıklar. Bu gösterim hazır çekirdek programı değildir; gerçek uygulamada zaman ve bütçe muhasebesi olay geri çağrılarına uyarlanacaktır.
+
+```text
+MODEL_ADIMI (t, çalışan, bütçe):
+  Pencere sınırındaysa bütçeyi yenile; yeni görevleri kabul et.
+  Çalışan varsa ve (dilim bitti veya
+      özel kip + etkileşimli + bütçe sıfır + hazır arka plan varsa):
+    Çalışanı kuyruğun sonuna koy; son_bekleme = t; çalışanı boşalt.
+  Çalışan yoksa:
+    RR kipinde: hazır kuyruğun ilk görevini seç.
+    Özel kipte:
+      Eşiği geçen varsa son_beklemesi en eski olanı seç.
+      Değilse bütçe varsa veya arka plan boşsa etkileşimliyi tercih et.
+      Aksi halde arka planı tercih et.
+      Tercih edilen sınıf boşsa hazır kuyruğun ilkine dön.
+    Seçilen görev için zaman dilimini başlat.
+  Görev yoksa t = t + 1; sonraki adıma geç.
+  İlk çalışmaysa başlangıcı kaydet; görevi 1 ms çalıştır.
+  Kalan CPU ihtiyacı ve dilimi azalt.
+  Görev etkileşimliyse ve bütçe pozitifse bütçeyi azalt.
+  t = t + 1; tamamlandıysa bitişi kaydet ve çalışanı boşalt.
+```
+
+Kabul sırası geliş zamanı, eşitlikte görev numarasıdır; seçimde eşitlik kuyruk sıra numarasıyla çözülür. Son bekleme başlangıcı, görevin yaşam boyu toplam beklemesi değildir. Yeni geliş veya pencere yenilenmesi tek başına çalışan görevi kesmez; yaşlandırma yeniden seçim anında uygulanır. Yaşlandırmayla sıfır bütçede seçilen etkileşimli görev de bir adım çalışabilir. Bu nedenle bütçe, katı CPU payı garantisi değildir.
+
+![Şekil 1. Mevcut modelin zaman adımı ve görev seçimi akışı. Çekirdek uygulaması olay temelli olacaktır.](ekler/ek3_politika_akisi.png)
+
 ### İş yükleri, gözlem penceresi ve örnekleme — iş adımı 4
 
-Ana deney üç ailede iki yoğunluk düzeyinden oluşur:
+Ana deney üç ailede iki yoğunluk düzeyinden oluşur. Çizelge 4, altı ana hücreyi ve ölçüm kapsamını gösterir:
 
 | Aile | Yoğunluk düzeyleri | İş tanımı | Ölçüt ve gözlem kuralı |
 |---|---|---|---|
@@ -121,70 +221,99 @@ Kaynak commit'i, çekirdek yapılandırması, araç sürümleri, tohumlar, sın�
 
 Çalışma altı aylık sürede yürütülecektir. Aylar projenin yürürlüğe girmesinden itibaren göreli olarak tanımlanmıştır; 24 haftalık aktif çalışma bu altı aylık dönem içinde planlanmıştır. Literatür incelemesi, raporlama ve paylaşım ilgili teknik faaliyetlerin içinde yürütülecek, ayrı iş adımı olarak gösterilmeyecektir.
 
-| Dönem | Faaliyet | Sorumlu | Başarı ölçütü | Başarıya katkı (%) |
+| İP No | İş Paketlerinin Adı ve Hedefleri | Kim Tarafından Gerçekleştirileceği | Zaman Aralığı | Başarı Ölçütü ve Projenin Başarısına Katkısı |
 |---|---|---|---|---|
-| Ay 1 / hafta 1–4 | Deney ortamı ve örnek politika doğrulaması | Burak Şanlı | Özellik/araç/yetki kayıtları; geri yüklenebilir VM; üç başarılı yükleme-kaldırma ve dönüş denemesi | 15 |
-| Ay 2 / hafta 5–8 | Politika/model genişletme ve sınır koşullarının incelenmesi | Burak Şanlı | En az üç yük ailesi; kural ve istisnaların belgelenmesi; analitik ve karşı örnek kayıtları | 20 |
-| Ay 3–ilk yarı Ay 4 / hafta 9–14 | Çekirdek politika uygulaması ve işlevsel doğrulama | Burak Şanlı | Uygun çekirdekte çalışır politika; toplam en az 25 test/kontrol senaryosu; görev ilerlemesi ve geri dönüş kayıtları | 25 |
-| İkinci yarı Ay 4–Ay 5 / hafta 15–20 | Pilot ve kontrollü karşılaştırmalı deneyler | Burak Şanlı | Altı hücrede 60 çift/120 ana koşu: 80 gecikme ve 40 saf arka plan; gecikme koşusu başına en az 1.000 örnek; kayıt ve dışlama gerekçeleri tam | 25 |
-| Ay 6 / hafta 21–24 | Sağlamlık, maliyet ve başarısız yük koşullarının doğrulanması | Burak Şanlı | İki karma yükte üç ek kontrol için 30 çift/60 ek koşu; bileşen, maliyet ve olumsuz sonuç tabloları; tekrar üretim kontrolü | 15 |
+| 1 | Deney ortamı ve örnek politika doğrulaması | Burak Şanlı | Ay 1 / hafta 1–4 | Özellik/araç/yetki kayıtları; geri yüklenebilir VM; üç başarılı yükleme-kaldırma ve dönüş denemesi. Katkı: %15 |
+| 2 | Politika/model genişletme ve sınır koşullarının incelenmesi | Burak Şanlı | Ay 2 / hafta 5–8 | En az üç yük ailesi; kural ve istisnaların belgelenmesi; analitik ve karşı örnek kayıtları; 21 planlanan model pilotu. Katkı: %20 |
+| 3 | Çekirdek politika uygulaması ve işlevsel doğrulama | Burak Şanlı | Ay 3–ilk yarı Ay 4 / hafta 9–14 | Uygun çekirdekte çalışır politika; toplam en az 25 test/kontrol senaryosu; görev ilerlemesi ve geri dönüş kayıtları. Katkı: %25 |
+| 4 | Pilot ve kontrollü karşılaştırmalı deneyler | Burak Şanlı | İkinci yarı Ay 4–Ay 5 / hafta 15–20 | En fazla 56 gerçek parametre pilotu ana veriden ayrı; Altı hücrede 60 çift/120 ana koşu: 80 gecikme ve 40 saf arka plan; gecikme koşusu başına en az 1.000 örnek; kayıt ve dışlama gerekçeleri tam. Katkı: %25 |
+| 5 | Sağlamlık, maliyet ve başarısız yük koşullarının doğrulanması | Burak Şanlı | Ay 6 / hafta 21–24 | İki karma yükte üç ek kontrol için 30 çift/60 ek koşu; bileşen, maliyet ve olumsuz sonuç tabloları; tekrar üretim kontrolü. Katkı: %15 |
 
 Katkı ağırlıkları toplamı yüzde 100'dür. Akademik danışman bütün iş adımlarında bilimsel değerlendirme ve rehberlik sağlayacaktır.
 
 ## 3.2. Risk Yönetimi
 
-| Risk ve izlenecek belirti | Önlem / B planı | Yöntem ve takvim etkisi; korunacak hedef |
+| İP No | En Önemli Riskler | Risk Yönetimi (B Planı) |
 |---|---|---|
-| Mevcut dağıtım çekirdeğinde sched_ext/BTF bulunmaması veya örnek yüklemenin ilk iki haftada başarısız olması | Aynı araştırma sorusunu ve sched_ext yolunu koruyarak ayrı misafir sistemde uygun çekirdek kaynak etiketi seçilir; gerekli yapılandırma açılır, aynı kaynak ağacındaki örnek ve kullanıcı alanı bileşenleri derlenir. İkinci haftanın sonunda destek kararı verilir; üçüncü/dördüncü haftalar yapılandırılmış misafirin ve örnek politikanın kurulmasına ayrılır. | Çekirdeğin adil zamanlayıcısına belirsiz bir yama yazmaya geçilmez. Kaynak/araç sürümü kayda alınır; aynı misafir hem varsayılan hem özel politikada kullanılır. Birinci ayın sonunda üç yükleme-kaldırma/geri dönüş kontrolü geçmeden entegrasyon tamamlandı sayılmaz. |
-| Donanım hızlandırma veya iç içe sanallaştırma bulunmaması | Önce kişisel bilgisayarda işletim sisteminin desteklediği ayrı VM arka ucu denenir. Bu mümkün değilse aynı misafir görüntüsü yazılımsal emülasyonla çalıştırılır; 1.000 gözlem penceresi korunur, duvar süresi maliyeti pilotta ölçülür. | Yürütme arka ucu aynı veri grubunda karıştırılmaz; bütün eşleştirilmiş koşullar aynı arka uçta alınır. Bulgular emülasyon ortamına koşullu açıklanır, yerel donanım genellemesi yapılmaz. Ek çok çekirdek genişletmesi çıkarılıp temel tek CPU karşılaştırması korunur. |
-| Politika hatası, runnable görevlerin durması veya yükleyici çökmesi | Geri yüklenebilir misafir görüntüsü, örnek politika ile doğrulanmış sonlandırma/varsayılana dönüş ve dışarıdan misafir durdurma yolu kullanılır. Normal kapatma, yükleyicinin sonlandırılması ve kontrollü hata senaryoları üçüncü ay doğrulama paketine eklenir. | Hatalı sürüm ana ölçümde kullanılmaz. Güvenilir commit'e/görüntüye dönülür; hata kaydı, nedeni ve yeniden test sonucu saklanır. Başarısız yükleme model sonucu ile değiştirilerek çekirdek hedefi tamamlanmış gösterilmez. |
-| Bütçe muhasebesinin CPU zamanı yerine beklemeyi de tüketmesi, yield veya pencere sınırında hatalı sayaç | Görev çalışma sayacı ile politika bütçesi küçük analitik CPU/uyku/yield senaryolarında karşılaştırılır; pencere sınırı ve yeniden kuyruğa giriş ayrı sınanır. API'nin sağlayamadığı davranış açıkça belgelenir ve modelde eşleştirilir. | İkinci/üçüncü adımda giderilmeden ana deney başlamaz. Eksik muhasebe ile performans kazanımı iddia edilmez; gerçek politikanın uyguladığı kural esas alınır. |
-| Etkileşimli kazanç karşılığında arka plan ilerlemesinin bozulması | Bütçe ve yaşlandırma pilotta incelenir; önceden ilan edilen son deney eşikleri sonuç görüldükten sonra değiştirilmez. Ek bileşen kapatma kontrolleriyle etki araştırılır. | Hipotez kısmen veya tamamen desteklenmeyebilir; bu durum yük koşulları ve belirsizliğiyle raporlanır. Araştırma hedefi olumlu sayıyı zorlamak değil, dengeleri açıklamaktır. |
-| Ön çalışmadaki kısa işçilerin ana gecikme penceresinden önce bitmesi | 800 ms ön çalışma işçisi ana deneyde tekrar kullanılmaz. Yeni sürekli işçiler ısınma ve bütün örnekleme penceresi boyunca ilerleme sayacı üretir; başlangıç/bitiriş ve yük varlığı kaydedilir. | Gözlem penceresinin bir kısmının sessizce yüksüz kalması önlenir. Gerçekten eksik/yanlış başlatılan koşu, önceden tanımlanmış işlevsel geçersizlik gerekçesiyle ayrı kaydedilip tekrarlanır. |
-| Yüksek ortam gürültüsü, eksik kayıt veya VM arka ucu değişimi | Eşleştirme, sıra rastgeleleştirme, ortam kaydı ve pilot tekrar planı uygulanır. Kaynak değiştiğinde veri grubu ayrı tutulur; önceden tanımlı eksik-kayıt kuralları kullanılır. | Tekrarlama artırılabilir; yetersiz kesinlik sürerse belirsizlik ve ortamla sınırlı sonuç raporlanır. Kötü gecikme veya hipotezin desteklenmemesi dışlama nedeni değildir. |
-| İş takviminin genişlemesi | Beşinci adımın ek parametre/bileşen hücreleri daraltılır; otomatik sınıflandırma ve çok çekirdek zaten temel hedef dışındadır. | Üç aile × iki yoğunluk × 10 eşleştirilmiş bloktan oluşan ana tasarım ile güvenli yükleme/geri dönüş korunur. B planı için model-only tamamlanma veya onaysız kurum donanımı varsayılmaz. |
+| 1 | Mevcut dağıtım çekirdeğinde sched_ext/BTF bulunmaması veya örnek yüklemenin ilk iki haftada başarısız olması | Aynı araştırma sorusunu ve sched_ext yolunu koruyarak ayrı misafir sistemde uygun çekirdek kaynak etiketi seçilir; gerekli yapılandırma açılır, aynı kaynak ağacındaki örnek ve kullanıcı alanı bileşenleri derlenir. İkinci haftanın sonunda destek kararı verilir; üçüncü/dördüncü haftalar yapılandırılmış misafirin ve örnek politikanın kurulmasına ayrılır. Yöntem/takvim etkisi: Çekirdeğin adil zamanlayıcısına belirsiz bir yama yazmaya geçilmez. Kaynak/araç sürümü kayda alınır; aynı misafir hem varsayılan hem özel politikada kullanılır. Birinci ayın sonunda üç yükleme-kaldırma/geri dönüş kontrolü geçmeden entegrasyon tamamlandı sayılmaz. |
+| 1 | Donanım hızlandırma veya iç içe sanallaştırma bulunmaması | Önce kişisel bilgisayarda işletim sisteminin desteklediği ayrı VM arka ucu denenir. Bu mümkün değilse aynı misafir görüntüsü yazılımsal emülasyonla çalıştırılır; 1.000 gözlem penceresi korunur, duvar süresi maliyeti pilotta ölçülür. Yöntem/takvim etkisi: Yürütme arka ucu aynı veri grubunda karıştırılmaz; bütün eşleştirilmiş koşullar aynı arka uçta alınır. Bulgular emülasyon ortamına koşullu açıklanır, yerel donanım genellemesi yapılmaz. Ek çok çekirdek genişletmesi çıkarılıp temel tek CPU karşılaştırması korunur. |
+| 1, 3 | Politika hatası, runnable görevlerin durması veya yükleyici çökmesi | Geri yüklenebilir misafir görüntüsü, örnek politika ile doğrulanmış sonlandırma/varsayılana dönüş ve dışarıdan misafir durdurma yolu kullanılır. Normal kapatma, yükleyicinin sonlandırılması ve kontrollü hata senaryoları üçüncü ay doğrulama paketine eklenir. Yöntem/takvim etkisi: Hatalı sürüm ana ölçümde kullanılmaz. Güvenilir commit'e/görüntüye dönülür; hata kaydı, nedeni ve yeniden test sonucu saklanır. Başarısız yükleme model sonucu ile değiştirilerek çekirdek hedefi tamamlanmış gösterilmez. |
+| 2, 3 | Bütçe muhasebesinin CPU zamanı yerine beklemeyi de tüketmesi, yield veya pencere sınırında hatalı sayaç | Görev çalışma sayacı ile politika bütçesi küçük analitik CPU/uyku/yield senaryolarında karşılaştırılır; pencere sınırı ve yeniden kuyruğa giriş ayrı sınanır. API'nin sağlayamadığı davranış açıkça belgelenir ve modelde eşleştirilir. Yöntem/takvim etkisi: İkinci/üçüncü adımda giderilmeden ana deney başlamaz. Eksik muhasebe ile performans kazanımı iddia edilmez; gerçek politikanın uyguladığı kural esas alınır. |
+| 4, 5 | Etkileşimli kazanç karşılığında arka plan ilerlemesinin bozulması | Bütçe ve yaşlandırma pilotta incelenir; önceden ilan edilen son deney eşikleri sonuç görüldükten sonra değiştirilmez. Ek bileşen kapatma kontrolleriyle etki araştırılır. Yöntem/takvim etkisi: Hipotez kısmen veya tamamen desteklenmeyebilir; bu durum yük koşulları ve belirsizliğiyle raporlanır. Araştırma hedefi olumlu sayıyı zorlamak değil, dengeleri açıklamaktır. |
+| 4 | Ön çalışmadaki kısa işçilerin ana gecikme penceresinden önce bitmesi | 800 ms ön çalışma işçisi ana deneyde tekrar kullanılmaz. Yeni sürekli işçiler ısınma ve bütün örnekleme penceresi boyunca ilerleme sayacı üretir; başlangıç/bitiriş ve yük varlığı kaydedilir. Yöntem/takvim etkisi: Gözlem penceresinin bir kısmının sessizce yüksüz kalması önlenir. Gerçekten eksik/yanlış başlatılan koşu, önceden tanımlanmış işlevsel geçersizlik gerekçesiyle ayrı kaydedilip tekrarlanır. |
+| 4, 5 | Yüksek ortam gürültüsü, eksik kayıt veya VM arka ucu değişimi | Eşleştirme, sıra rastgeleleştirme, ortam kaydı ve pilot tekrar planı uygulanır. Kaynak değiştiğinde veri grubu ayrı tutulur; önceden tanımlı eksik-kayıt kuralları kullanılır. Yöntem/takvim etkisi: Tekrarlama artırılabilir; yetersiz kesinlik sürerse belirsizlik ve ortamla sınırlı sonuç raporlanır. Kötü gecikme veya hipotezin desteklenmemesi dışlama nedeni değildir. |
+| 1–5 | İş takviminin genişlemesi | Beşinci adımın ek parametre/bileşen hücreleri daraltılır; otomatik sınıflandırma ve çok çekirdek zaten temel hedef dışındadır. Yöntem/takvim etkisi: Üç aile × iki yoğunluk × 10 eşleştirilmiş bloktan oluşan ana tasarım ile güvenli yükleme/geri dönüş korunur. B planı için model-only tamamlanma veya onaysız kurum donanımı varsayılmaz. |
 
 
 ## 3.3. Araştırma Olanakları
 
-Proje, yürütücünün mevcut kişisel bilgisayarında ve açık kaynak geliştirme araçlarıyla yürütülecektir. Yürütücünün sağladığı sistem çıktısına göre işlemci i7-12650H modeli 12. nesil bir işlemcidir; toplam fiziksel bellek yaklaşık 15,7 GiB'dir. Bu bilgiler mevcut donanımı tanımlar; kurum laboratuvarı veya ek cihaz tahsisi varsayılmamaktadır. Windows üzerinde kurulu Ubuntu/WSL ortamında C derlemesi ve 13 test yöntemi başarıyla tamamlanmıştır. Sağlanan paket kayıtlarında GCC 15 ve Python 3.14 yer almaktadır. Bu doğrulama, hedef misafir çekirdeğin sched_ext/BTF desteğini veya iç içe donanım hızlandırmayı doğrulamamaktadır.
-
-Çekirdek deneyleri için ayrı misafir sisteme başlangıçta 2 sanal CPU ve 4 GiB RAM ayrılması hedeflenmektedir. Ölçüm görevleri tek misafir CPU'ya sabitlenecek; işletim sistemi ve yönetim için diğer sanal CPU kullanılabilecektir. Bu tahsis kurulu bir kaynak olarak değil ilk iş adımında sınanacak yapılandırma olarak tanımlanmıştır. Kullanılabilir disk alanı, sanallaştırma arka ucu ve host kaynak baskısı ilk hafta kaydedilecektir. Geri yüklenebilir disk görüntüsü ve çekirdek derleme alanı için yeterli boş alan doğrulanmadan kaynak tahsisi tamamlanmış sayılmayacaktır. Konuk CPU yerleşimi, host güç modu ve eşzamanlı yük eşleştirilmiş ölçümlerde sabit/kayıtlı tutulacak; farklı yürütme arka uçları aynı veri grubunda birleştirilmeyecektir.
-
-Hazır yazılım olanakları; C tabanlı referans model, gerçek Linux başlangıç ölçüm programı, üç iş yükü ailesi, otomatik testler, deney betiği ve özgün ham veri arşividir. 5 Kasım 2026 tarihli ilk Debian/Linux veri grubu, yerel Ubuntu test doğrulamasından ayrı tutulmaktadır. Yeni çekirdek destekli misafir sistem kurulumu, olay tabanlı politika ve uzun gözlem penceresine uygun ana deney yükleri planlanan geliştirmelerdir. Mevcut olanaklarla yürütme tercihine göre ek ekipman, ücretli hizmet, seyahat veya sarf alımı öngörülmemekte; yeni gider planı 0 TL'dir. Destek talebinin sisteme uygunluğu ve gereken idari işlemler, resmî başvuru aşamasında kontrol edilecektir.
+| Kuruluşta Bulunan Altyapı/Ekipman Türü, Modeli | Projede Kullanım Amacı |
+|---|---|
+| Yürütücünün kişisel bilgisayarı: Intel Core i7-12650H, yaklaşık 15,7 GiB RAM | C modeli, analiz ve ayrı konuk sistem üzerinde çekirdek deneyleri. Kurum cihazı tahsisi varsayılmaz. |
+| Windows üzerinde kurulu Ubuntu/WSL; paylaşılan kayıtlarda GCC 15 ve Python 3.14 | C derlemesi, Python deney otomasyonu ve 13 testin yerel doğrulaması. WSL'de sched_ext yükleme yetkisi veya desteği kanıtlanmış değildir. |
+| Mevcut C programları, üç CSV iş yükü, testler ve sürümlendirilmiş deney arşivi | Başlangıç ölçümlerinin tekrarı, sınırlı model pilotu, veri şeması ve analiz altyapısı. |
+| Açık kaynak derleyici, Git, Python ve çekirdek araçları | Geliştirme ve yeniden üretim; ücretli lisans veya yeni donanım alımı planlanmaz. |
+| Planlanan ayrı test konuğu: başlangıçta 2 sanal CPU ve 4 GiB RAM | Henüz kurulmuş veya kurumca tahsis edilmiş kaynak değildir. Disk alanı, arka uç, BPF/BTF ve yükleme/geri dönüş İP1'de doğrulanacaktır; ölçüm görevleri tek konuk CPU'suna sabitlenecektir. |
 
 # 4. ARAŞTIRMA ÖNERİSİNİN YAYGIN ETKİSİ
 
-| Kategori | Ölçülebilir ve gerçekçi beklenen çıktı |
+| Yaygın Etki Türleri | Önerilen Araştırmadan Beklenen Çıktı, Sonuç ve Etkiler |
 |---|---|
-| Bilimsel / teknik | Bir politika tanımı ve uygun çekirdekte prototip; üç yük ailesini ve altı hücreyi kapsayan karşılaştırma veri grubu; gecikme, arka plan ilerlemesi ve maliyetin birlikte değerlendirildiği bir teknik rapor. |
-| Eğitim / insan kaynağı | Sistem programlama, çekirdek araçları ve deney tasarımını açıklayan yeniden üretim yönergeleri; test ve iş yükü örneklerinin en az bir bölüm içi teknik sunumla paylaşılması. |
-| Açık araştırma ve yeniden kullanım | Uygun lisans ve kurum koşulları gözetilerek sürümlendirilmiş kod, seçilmiş kişisel veri içermeyen ham ölçümler ve veri şemalarının paylaşılması. |
-| Sonraki araştırmalar | Otomatik sınıflandırma veya çok çekirdek gibi genişletmeler için açık kısıt ve karşı örnek listesi; lisansüstü araştırmaya başlangıç sağlayabilecek yöntemsel birikim. |
+| Bilimsel/Akademik (Makale, Bildiri, Kitap Bölümü, Kitap) | Uygun çekirdekte politika prototipi, altı hücreli karşılaştırma veri grubu ve gecikme–ilerleme–maliyet analizi içeren bir teknik rapor. Sonuçlar yeterli bilimsel olgunluğa ulaşırsa danışmanla bir bildiri veya makale taslağı değerlendirilecektir; kabul ve yayın garantisi verilmez. |
+| Ekonomik/Ticari/Sosyal (Prototip, Veri Tabanı, Belgeleme, Eğitim vb.) | Uygun lisans ve kurum koşullarıyla sürümlendirilmiş kod, kişisel veri içermeyen seçilmiş ham ölçümler ve veri şemaları. En az bir bölüm içi teknik sunum ve yeniden üretim yönergeleriyle sistem programlama eğitimine katkı. Ticari ürün veya patent kesin çıktı değildir. |
+| Araştırmacı Yetiştirilmesi ve Yeni Projeler Oluşturma | C, Linux/BPF araçları ve kontrollü deney tasarımında yetkinlik; otomatik sınıflandırma ve çok çekirdek gibi sonraki araştırmalar için açık kısıt, karşı örnek ve genişletme listesi. |
 
-Yayın kabulü, patent, ticari ürün veya belirli performans kazancı kesin çıktı olarak vaat edilmemektedir. Eğitim ve yeniden kullanım hedefleri, teknik belgeler ve doğrulanabilir kod/veri çıktılarıyla değerlendirilecektir.
+# 5. BÜTÇE TALEP ÇİZELGESİ
 
+| Bütçe Türü | Talep Edilen Bütçe Miktarı (TL) | Talep Gerekçesi |
+|---|---:|---|
+| Sarf Malzeme | 0 TL | Sarf malzemesi alımı planlanmamaktadır. |
+| Makina/Teçhizat (Demirbaş) | 0 TL | Mevcut kişisel bilgisayar kullanılacaktır; yeni cihaz alımı yoktur. |
+| Hizmet Alımı | 0 TL | Ücretli test/analiz hizmeti planlanmamaktadır. |
+| Ulaşım | 0 TL | Proje için ulaşım gideri planlanmamaktadır. |
+| TOPLAM | 0 TL | Mevcut olanaklarla yürütme planıdır; sıfır bütçenin TYBS/program tarafından kabulü ayrıca doğrulanmalıdır. |
 
-# 5. BELİRTMEK İSTEDİĞİNİZ DİĞER KONULAR
+# 6. BELİRTMEK İSTEDİĞİNİZ DİĞER KONULAR
 
 Ön çalışma, algoritma geliştirme ve gerçek süreçlerden veri toplama altyapısının uygulanabilirliğini göstermektedir. Karışık model iş yükünde etkileşimli görevlerin ortalama ilk yanıtı 11 ms'den 3 ms'ye inmiştir. Yoğun etkileşimli senaryoda ise ortalama toplam bekleme 252,667 ms'den 303,833 ms'ye yükselmiştir. Bu karşıt bulgular, araştırmada ilk yanıtın yanında tamamlanma ve ilerleme ölçütlerinin birlikte değerlendirilmesini gerekçelendirmektedir.
 
 Mevcut gerçek Linux deneylerinde özel politika uygulanmamıştır. Bu kayıtlar başlangıç çizgisidir; Linux üzerinde politika kazancı kanıtı olarak yorumlanmamaktadır. Kaynak kodları, test kayıtları ve özgün deney arşivi sürümlendirilmiştir: https://github.com/sanlibrk/Kernel_CPU
 
-# 6. EKLER
+### Yerel doğrulama ve kayıt kapsamı
 
-Ek 1: Karışık model iş yükünde ortalama ilk yanıt ve arka plan dönüş süreleri.
-Ek 2: Yoğun etkileşimli model iş yükünde ilk yanıt ve toplam bekleme karşılaştırması.
+9 Kasım 2026 tarihli yürütücü terminal çıktısında Ubuntu/WSL üzerinde 13 testin başarıyla tamamlandığı, karışık modelin 11→3 ms ilk yanıt sonuçlarını yeniden ürettiği ve tam deney komutunun 6 model / 6 Linux koşusu, 240 gözlem için başarı bildirdiği görülmüştür. Tam otomatik grubun ham CSV/JSON dosyaları henüz paylaşılmadığından bu grubun sayıları bağımsız yeniden hesaplanmış gibi sunulmamaktadır. Terminal çıktısı ve aktarılmış özet, `experiments/hafta2/2026-11-09-wsl` altında ayrı tutulmaktadır.
+
+Çizelge 5. Yerel WSL üzerinde ayrı çalıştırılan iki başlangıç ölçümü; süreler ms'dir.
+
+| Arka plan çalışanı | Gözlem | Ortalama uyanma gecikmesi | P95 uyanma gecikmesi | En yüksek |
+|---|---:|---:|---:|---:|
+| 0 | 40 | 0,301670 | 0,571509 | 0,670742 |
+| 2 | 40 | 1,130421 | 3,984890 | 5,537544 |
+
+Bu iki tekil koşu, otomatik grubun altı koşusuyla aynı veriler olarak gösterilmez. Eski Debian bulut verileriyle birleştirilmez. Özel politika gerçek Linux ölçümlerinde kullanılmamıştır; sonuçlar onun kazancı değildir.
+
+![Şekil 2. Karışık model yükünde ortalama ilk yanıt ve arka plan dönüş süresi; 5 Kasım 2026 model arşivi.](ekler/ek1_karisik_model.png)
+
+![Şekil 3. Yoğun etkileşimli modelde ilk yanıt iyileşmesi ve toplam bekleme artışı; 5 Kasım 2026 model arşivi.](ekler/ek2_yogun_etkilesimli_model.png)
+
+# 7. EKLER
+
+Ek 1: Şekil 1–3 için ayrı PNG/SVG dosyaları, çizim kaynağı ve veri kaynağı açıklamaları.
+Ek 2: 5 Kasım deney arşivi ve 9 Kasım yerel terminal kaydı için depo bağlantıları ve bütünlük özetleri.
 
 Grafikler ilk deney arşivinden üretilmiştir. Katılımcı anketi, ölçek veya kişisel veri toplama bu araştırmada planlanmamıştır.
 
 
 # KAYNAKLAR
 
-Linux Kernel Community. 2024a. “CFS Scheduler”, Linux v6.12 kaynak ağacı, Documentation/scheduler/sched-design-CFS.rst. İnternet: https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-design-CFS.rst. Son erişim: 9 Kasım 2026.
+Goel, A., Abeni, L., Krasic, C., Snow, J. ve Walpole, J. (2002). Supporting Time-Sensitive Applications on a Commodity OS. 5th Symposium on Operating Systems Design and Implementation (OSDI '02), 165–180. İncelenen tam metin: https://raw.githubusercontent.com/Yodaquette/CS6210_AdvOS_Papers/master/part03_RecoveryAndInternetScaleComputing/02_RealtimeAndMultimedia/01_TimeSensitiveApps.pdf. Erişim: 9 Kasım 2026.
 
-Linux Kernel Community. 2024b. “EEVDF Scheduler”, Linux v6.12 kaynak ağacı, Documentation/scheduler/sched-eevdf.rst. İnternet: https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-eevdf.rst. Son erişim: 9 Kasım 2026.
+Linux Kernel Community. (2024a). CFS Scheduler. Linux v6.12, Documentation/scheduler/sched-design-CFS.rst. https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-design-CFS.rst. Erişim: 9 Kasım 2026.
 
-Linux Kernel Community. 2024c. “Extensible Scheduler Class”, Linux v6.12 kaynak ağacı, Documentation/scheduler/sched-ext.rst. İnternet: https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-ext.rst. Son erişim: 9 Kasım 2026.
+Linux Kernel Community. (2024b). EEVDF Scheduler. Linux v6.12, Documentation/scheduler/sched-eevdf.rst. https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-eevdf.rst. Erişim: 9 Kasım 2026.
 
-Linux Kernel Community. 2024d. “scx_simple.bpf.c”, Linux v6.12 kaynak ağacı, tools/sched_ext/scx_simple.bpf.c. İnternet: https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c. Son erişim: 9 Kasım 2026.
+Linux Kernel Community. (2024c). Extensible Scheduler Class. Linux v6.12, Documentation/scheduler/sched-ext.rst. https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-ext.rst. Erişim: 9 Kasım 2026.
+
+Linux Kernel Community. (2024d). scx_simple.bpf.c. Linux v6.12, tools/sched_ext/scx_simple.bpf.c. https://github.com/torvalds/linux/blob/v6.12/tools/sched_ext/scx_simple.bpf.c. Erişim: 9 Kasım 2026.
+
+Linux Kernel Community. (2024e). Deadline Task Scheduling. Linux v6.12, Documentation/scheduler/sched-deadline.rst. https://github.com/torvalds/linux/blob/v6.12/Documentation/scheduler/sched-deadline.rst. Erişim: 9 Kasım 2026.

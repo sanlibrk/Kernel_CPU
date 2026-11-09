@@ -1,0 +1,48 @@
+{
+  "record_date": "2026-11-09",
+  "source_type": "Yürütücünün paylaştığı terminal çıktısı",
+  "environment": {
+    "platform": "Windows üzerinde Ubuntu/WSL",
+    "kernel_version": null,
+    "cpu": "Intel Core i7-12650H",
+    "physical_memory_gib_approx": 15.7
+  },
+  "standalone_tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "reported_duration_seconds": 0.475
+  },
+  "model_mixed_interactive_response_ms": {
+    "rr": 11,
+    "interactive": 3
+  },
+  "standalone_linux_baseline": [
+    {
+      "workers": 0,
+      "sample_count": 40,
+      "wake_mean_ms": 0.30167,
+      "wake_p95_ms": 0.571509,
+      "wake_max_ms": 0.670742
+    },
+    {
+      "workers": 2,
+      "sample_count": 40,
+      "wake_mean_ms": 1.130421,
+      "wake_p95_ms": 3.98489,
+      "wake_max_ms": 5.537544
+    }
+  ],
+  "full_experiment": {
+    "terminal_reports_success": true,
+    "directory_reported": "results/week2-20261109-190318-856835",
+    "reported_test_count": 13,
+    "reported_model_runs": 6,
+    "reported_linux_runs": 6,
+    "reported_short_samples": 240,
+    "raw_result_files_received": false
+  },
+  "custom_kernel_policy_loaded": false,
+  "source_file": "terminal_log.txt",
+  "source_sha256": "21dff1f0f56de9595a7a380eb30069c758f3944b5a9d63855006d460f20f732d"
+}

@@ -1,4 +1,4 @@
-# CPU yönetimi ve süreç zamanlama
+# Gecikme Odaklı CPU Zamanlama
 
 **Burak Şanlı · Harran Üniversitesi · Bilgisayar Mühendisliği Bitirme Projesi**
 **Danışman:** Prof. Dr. Dursun Akaslan
@@ -8,16 +8,21 @@ kısa ve etkileşimli görevlerin bekleme sürelerini incelemektedir. Amaç, uzu
 ilerlemesini koruyarak kısa görevlerin yanıt süresini azaltabilecek bir zamanlama
 politikası geliştirmek ve sınırlarını karşılaştırmalı deneylerle değerlendirmektir.
 
-## Güncel proje raporu — 9 Kasım 2026
+## 2209-A araştırma önerisi — başvuru belgesi
 
-[2209-A biçimindeki proje raporu](docs/basvuru/2209a/README.md), sağlanan sonuç
-raporu şablonunda mevcut çalışmaların durumunu ve altı aylık geliştirme planını
-bir araya getirir. Kapak, bilgi tabloları ve imza alanları şablondan korunur.
-Belge, tamamlanmış bir projenin resmî kapanış bildirimi olarak sunulmamaktadır.
+[Araştırma önerisi ve başvuru belgeleri](docs/basvuru/2209a/README.md), bilimsel
+gerekçeyi, akademik kaynak karşılaştırmasını, politika tasarımını ve altı aylık
+deney planını sunar. Parametre gerekçesi, politika sözde kodu ve akış şeması
+yöntemin nasıl sınanacağını açıklar. Bu bölümdeki ana belge başvuruya yönelik
+araştırma önerisidir.
 
-- [Word raporunu indir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx)
-- [PDF raporunu aç](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.pdf)
-- [Rapor metnini oku](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.md)
+Word/PDF, paylaşılan araştırma önerisi örneklerinin kapak ve tablolu form
+düzeninde, Arial 9 gövde yazısıyla hazırlanır. İş-zaman, risk, araştırma
+olanakları, yaygın etki ve bütçe çizelgeleri formun içinde doldurulmuştur.
+
+- [Araştırma önerisini Word olarak indir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.docx)
+- [Araştırma önerisini PDF olarak aç](docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.pdf)
+- [Araştırma önerisi metnini oku](docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.md)
 
 ## Haftalık çalışmalar
 
@@ -110,11 +115,18 @@ Linux dağıtımında sanal ortam desteği yoksa `python3-venv` paketinin kurulm
 gerekebilir. Bu bağımlılıklar C programlarını derlemek veya test etmek için
 gerekli değildir. Sunum hedefi yeni deney yapmaz; sürümlendirilmiş veri grubunu kullanır.
 
-## Araştırma önerisi ve başvuru referansları
+## Ayrı belge: mevcut çalışma durumu raporu
 
-[Araştırma önerisi](docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.md),
-başvuru alanlarına göre hazırlanmış ayrı bir belge olarak korunmaktadır.
+9 Kasım 2026 tarihli proje raporu, sağlanan sonuç raporu şablonunda mevcut
+çalışmaları ve kalan planı açıklar. Özgün kapak, tablolar ve imza alanları
+korunmuştur. Bu rapor, yukarıdaki araştırma önerisinin yerine geçmez ve
+tamamlanmış bir projenin resmî kapanış bildirimi değildir.
+
+- [Mevcut durum raporu — Word](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx)
+- [Mevcut durum raporu — PDF](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.pdf)
+- [Mevcut durum raporu metni](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.md)
+
 [Başvuru kontrol listesi](docs/basvuru/2209a/basvuru_kontrol_listesi_2026.md)
-ve [TYBS aktarım rehberi](docs/basvuru/2209a/tybs_aktarim_rehberi.md) bu öneriye
-aittir. Güncel çalışma raporu, yukarıdaki sonuç raporu şablonuna dayanan belge
-setidir. Dosyaların hazırlanması, resmî gönderim veya destek kararı anlamına gelmez.
+ve [TYBS aktarım rehberi](docs/basvuru/2209a/tybs_aktarim_rehberi.md), araştırma
+önerisinin başvuru sürecine aittir. Belge hazırlığı, resmî gönderim veya destek
+kararı anlamına gelmez.

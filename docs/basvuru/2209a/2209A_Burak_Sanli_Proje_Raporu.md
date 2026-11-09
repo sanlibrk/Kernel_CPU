@@ -6,7 +6,7 @@ Gönderilen sonuç raporu şablonu esas alınmıştır. Rapor kapsamı: 9 Kasım
 
 | Alan | Bilgi |
 | --- | --- |
-| Projenin konusu | Etkileşimli Görevlerde Yanıt Süresini İyileştirmeye Yönelik Bütçe ve Yaşlandırma Tabanlı CPU Zamanlama Politikasının Geliştirilmesi |
+| Projenin konusu | Gecikme Odaklı CPU Zamanlama |
 | Proje yürütücüsü | Burak Şanlı |
 | Üniversite / bölüm | Harran Üniversitesi / Bilgisayar Mühendisliği |
 | Öğrenci numarası | 210504018 |

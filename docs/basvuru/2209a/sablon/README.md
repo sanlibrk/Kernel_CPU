@@ -1,19 +1,38 @@
-# Raporun temel aldığı özgün Word şablonu
+# Belge biçimlerinin kaynakları
+
+## Araştırma önerisi çalışma şablonu
+
+[2209A_Arastirma_Onerisi_Formati.docx](2209A_Arastirma_Onerisi_Formati.docx),
+yürütücünün paylaştığı iki doldurulmuş araştırma önerisi örneğinin kapak,
+bölüm ve tablo düzeninden türetilmiştir. Bir örnek 2026'ya, diğeri 2024'e aittir.
+Yıl ve bilimsel nitelik başlıkları 2026 bilgi notuyla eşleştirilmiştir.
+
+Başka projelerin bilimsel metinleri, kimlikleri, kaynakçaları, bütçeleri ve
+grafikleri çalışma şablonunda bulunmaz. Orijinal doldurulmuş örnekler depoda
+yayımlanmamıştır. Biçimin teknik kaydı ve dosya özetleri
+[buradadır](arastirma_onerisi_bicim_kaydi.json).
+
+- Kapakta paylaşılan program logosu ve araştırma önerisi formu düzeni bulunur.
+- Gövde Arial 9'dur; içerik alanları çerçevelidir.
+- İş-zaman çizelgesi beş, risk tablosu üç sütunludur.
+- Araştırma olanakları, yaygın etki ve bütçe çizelgeleri ayrı doldurulur.
+- Word formundaki bütçe bölümü nedeniyle son bölüm numaraları çevrim içi 2026
+  bilgi notundan farklı olabilir; aktarım başlığın adına ve içeriğine göre yapılır.
+
+[Üretici](../../../../scripts/build_2209_application.py) bu şablonun kopyasını
+ana Markdown kaynağından doldurur. Uzun yöntem alanında sayfa akışını korumak
+üzere iç satırlar bölünebilir; çerçeve ve tek sütunlu alan görünümü korunur.
+Kapak bilgileri, şekiller ve kaynakça projeye göre eklenir. Örneklerdeki 20 sayfa
+üst sınırı kontrol edilir; asgari sayfa sayısı hedeflenmez.
+
+## Ayrı sonuç raporu şablonu
 
 [2209-a_sonuc_raporu_formati.docx](2209-a_sonuc_raporu_formati.docx),
-yürütücünün 9 Kasım 2026 tarihinde paylaştığı dosyanın değiştirilmemiş kopyasıdır.
+yürütücünün daha önce paylaştığı 16.008 baytlık dosyanın değiştirilmemiş kopyasıdır.
+SHA-256: `8401f2ae6e0e8d081bf0122ee3a7660d8763d5285a78af8c5e258c73dc3aaf7b`.
 
-- Boyut: 16.008 bayt.
-- SHA-256: `8401f2ae6e0e8d081bf0122ee3a7660d8763d5285a78af8c5e258c73dc3aaf7b`.
-- Özgün yapı: çerçeveli VML kapak, genel bilgi tablosu, beş numaralı içerik
-  bölümü, girişte proje konusu açıklaması, yürütücü/danışman imza tablosu ve tarih alanı.
-
-[Rapor üreticisi](../../../../scripts/build_2209_report.py) bu dosyayı açıp
-ayrı bir kopyayı doldurur. Kapaktaki boş satırlar, uzun proje başlığı ve danışman
-adının çerçeveye sığması için yeniden düzenlenir; özgün kapak nesnesi ve çerçevesi
-korunur. İçeriğe teknik alt başlıklar, sonuç tabloları ve iki model grafiği eklenir.
-Kaynak şablon dosyasının baytları değiştirilmez.
-
-Bu dosya sonuç raporu formatıdır. Araştırma önerisi, başvuru alanları ve resmî
-gönderim kontrolleri [başvuru referansları](../README.md#araştırma-önerisi-ve-başvuru-referansları)
-altında ayrı tutulur.
+Bu ayrı şablonda çerçeveli VML kapak, genel bilgi tablosu, beş numaralı içerik
+bölümü, yürütücü/danışman imza tablosu ve tarih alanı vardır.
+[Sonuç biçimli rapor üreticisi](../../../../scripts/build_2209_report.py)
+şablonu ayrı bir kopyada doldurur; özgün dosyanın baytlarını değiştirmez.
+Mevcut durum raporu, başvuru araştırma önerisinin yerine kullanılmaz.

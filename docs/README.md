@@ -1,21 +1,22 @@
 # Proje belgeleri
 
-Bu dizin, güncel proje raporunu, konu seçimi ve uygulama aşamalarının haftalık
-kayıtlarını ve başvuru referanslarını bir araya getirir. Henüz hazırlanmamış
-belgeler veya gelecekteki çalışmalar tamamlanmış çıktı olarak sunulmaz.
+**Proje:** Gecikme Odaklı CPU Zamanlama.
 
-## Güncel proje raporu — 9 Kasım 2026
+Bu dizin, başvuruya yönelik araştırma önerisini, haftalık çalışma kayıtlarını
+ve ayrı mevcut durum raporunu bir araya getirir. Gelecekteki çalışmalar
+tamamlanmış çıktı olarak sunulmaz.
 
-[2209-A proje raporu](basvuru/2209a/README.md), sağlanan sonuç raporu şablonunun
-kapak, tablo ve imza alanlarını kullanır. Gerçekleşen çalışmalar ile altı aylık
-plan ayrı değerlendirilir; rapor resmî proje tamamlanma beyanı değildir.
+## Başvuru için etkin belge: 2209-A araştırma önerisi
+
+[Araştırma önerisi](basvuru/2209a/README.md), bilimsel gerekçe, literatür
+karşılaştırması, parametre seçimi, sözde kod ve akış şemasıyla yöntem tasarımını
+açıklar. Altı aylık faaliyetler ve karşılaştırmalı deneyler plan olarak verilir.
 
 | Belge | Erişim |
 |---|---|
-| Düzenlenebilir Word raporu | [İndir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx) |
-| PDF raporu | [Aç](basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.pdf) |
-| Rapor metni | [Oku](basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.md) |
-| Kullanılan özgün şablon | [Word şablonu](basvuru/2209a/sablon/2209-a_sonuc_raporu_formati.docx) |
+| Araştırma önerisi — Word | [İndir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.docx) |
+| Araştırma önerisi — PDF | [Aç](basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.pdf) |
+| Araştırma önerisi metni | [Oku](basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.md) |
 
 ## Haftalık çalışma belgeleri
 
@@ -29,10 +30,17 @@ hafta altında listelenir.
 
 Sonraki haftaların kayıtları, çalışmalar tamamlandıkça aynı düzenle eklenir.
 
-## Araştırma önerisi ve başvuru referansları
+## Ayrı belge: mevcut çalışma durumu raporu
 
-[Araştırma önerisi](basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.md),
-[başvuru kontrol listesi](basvuru/2209a/basvuru_kontrol_listesi_2026.md) ve
-[TYBS aktarım rehberi](basvuru/2209a/tybs_aktarim_rehberi.md) ayrı amaçlı
-başvuru belgeleri olarak korunur. Sonuç raporu şablonunun kullanılması,
-araştırma önerisi ve resmî başvuru gereklerini ortadan kaldırmaz.
+9 Kasım 2026 tarihli rapor, sonuç raporu şablonunda gerçekleşen çalışmalarla
+kalan planı açıklar. Araştırma önerisinden ayrı tutulur; resmî proje tamamlanma
+beyanı olarak sunulmaz.
+
+- [Mevcut durum raporu — Word](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx)
+- [Mevcut durum raporu — PDF](basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.pdf)
+- [Mevcut durum raporu metni](basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.md)
+- [Kullanılan özgün sonuç raporu şablonu](basvuru/2209a/sablon/2209-a_sonuc_raporu_formati.docx)
+
+[Başvuru kontrol listesi](basvuru/2209a/basvuru_kontrol_listesi_2026.md) ve
+[TYBS aktarım rehberi](basvuru/2209a/tybs_aktarim_rehberi.md), araştırma
+önerisinin resmî başvuru adımlarını açıklar.

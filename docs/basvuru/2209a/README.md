@@ -1,26 +1,52 @@
-# 2209-A 2026 — CPU Zamanlama Araştırma Önerisi
+# 2209-A — CPU Zamanlama Proje Raporu
 
 **Yürütücü:** Burak Şanlı
 **Kurum:** Harran Üniversitesi · Bilgisayar Mühendisliği
 **Akademik danışman:** Prof. Dr. Dursun Akaslan
-**Kapsam:** Bireysel bitirme projesi · Planlanan süre: 6 ay
+**Rapor tarihi:** 9 Kasım 2026
+**Kapsam:** Mevcut çalışma aşaması · Bireysel bitirme projesi · Altı aylık plan
 
 Proje, kısa etkileşimli görevlerle CPU yoğun arka plan işlerinin birlikte
-çalıştığı koşullarda gecikme ve ilerleme dengesini araştırır. Sınırlı tercih
-bütçesi ve yaşlandırma kuralları, referans modelden uygun çekirdek altyapısına
-aktarılacak; varsayılan zamanlama ile karşılaştırılacaktır.
+çalıştığı koşullarda gecikme ve ilerleme dengesini araştırır. Güncel rapor,
+sağlanan **2209-A sonuç raporu şablonu** üzerinde hazırlanır; özgün kapak,
+iki tablo ve imza alanları korunur. Tamamlanan ön çalışmalar ile planlanan
+çekirdek entegrasyonu ve karşılaştırmalar açıkça ayrılır.
 
-## Güncel başvuru belgeleri
+Bu belge mevcut çalışma durumunu raporlar; bütün projenin tamamlandığı veya
+resmî sonuç raporunun gönderilip onaylandığı iddiasını içermez.
+
+## Güncel proje raporu
 
 | Belge | Kullanım |
 |---|---|
-| [Word dosyasını indir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.docx) | Düzenlenebilir araştırma önerisi. |
-| [PDF dosyasını aç](2209A_Burak_Sanli_Arastirma_Onerisi.pdf) | Sayfa düzeni korunmuş okuma ve inceleme kopyası. |
-| [Başvuru metnini oku](2209A_Burak_Sanli_Arastirma_Onerisi.md) | Word ve PDF'in üretildiği tek ana metin. |
+| [Word raporunu indir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx) | Özgün şablon üzerinde doldurulan düzenlenebilir proje raporu. |
+| [PDF raporunu aç](2209A_Burak_Sanli_Proje_Raporu.pdf) | Sayfa düzeni korunmuş okuma ve inceleme kopyası. |
+| [Rapor metnini oku](2209A_Burak_Sanli_Proje_Raporu.md) | Güncel çalışmaları, bulguları, çıktıları ve planı açıklayan metin. |
+| [Özgün Word şablonunu indir](sablon/2209-a_sonuc_raporu_formati.docx) | Raporun temel alındığı, ayrı saklanan sonuç raporu şablonu. |
+| [Rapor doğrulama kaydı](rapor_kontrolu.json) | Şablon, içerik ve üretilen rapor dosyalarına ilişkin kontroller. |
 
-Bu dizinde tek bir güncel belge seti tutulur. Önceki sürümler Git geçmişindedir.
+Etkin rapor dosyaları `2209A_Burak_Sanli_Proje_Raporu` adıyla tutulur. Önceden
+hazırlanan araştırma önerisi farklı amacını korur ve aşağıdaki başvuru
+referansları bölümünde listelenir.
 
-## Deney tasarımı
+## Gerçekleşen çalışmalar ve rapor kapsamı
+
+- C tabanlı zamanlama modeli ve gerçek Linux başlangıç ölçüm programı geliştirilmiştir.
+- İlk deney grubunda 13 test yöntemi, altı model koşusu ve toplam 240 kısa iş
+  gözlemi içeren altı gerçek Linux koşusu tamamlanmıştır.
+- 5 Kasım 2026 tarihli Debian/Linux deneyleriyle Ubuntu/WSL üzerinde doğrulanan
+  yerel C derlemesi ve 13 test birbirinden ayrılır.
+- Haftalık belgeler, teknik açıklamalar, deney arşivi ve sunum materyalleri hazırlanmıştır.
+- Özel zamanlama politikası henüz çekirdeğe yüklenmemiştir; model bulguları
+  Linux üzerinde politika kazancı olarak sunulmaz.
+
+Şablonun giriş, proje konusu, dönem çalışmaları, sonuç, çıktılar ve harcama
+başlıkları kullanılır. **Yürütücünün beyanına göre rapor tarihine kadar
+gerçekleşen proje gideri 0 TL'dir.** Resmî proje başlangıç/bitiş tarihleri ve
+imzalama tarihi kesinleşmiş bilgiler olarak girilmez; imza alanları imzalanmış
+olarak gösterilmez.
+
+## Altı aylık geliştirme ve değerlendirme planı
 
 | Aşama | Planlanan kapsam | Ölçüt |
 |---|---|---|
@@ -42,43 +68,53 @@ misafir veya doğrulanmış çekirdek desteği olarak sunulmaz. Yapılandırılm
 çekirdek ve gerektiğinde yazılımsal emülasyon B planıdır. Yürütme kipleri aynı
 karşılaştırma veri grubunda karıştırılmaz.
 
-## Kurallar, kaynaklar ve aktarım
+## Araştırma önerisi ve başvuru referansları
 
-- [Belge üzerinde hesaplanan uygunluk kontrolleri](uygunluk_kontrolu.json)
-- [TYBS aktarım rehberi ve alan eşleştirmesi](tybs_aktarim_rehberi.md)
-- [Gönderim öncesi resmî işlem kontrol listesi](basvuru_kontrol_listesi_2026.md)
+Araştırma önerisi, 2026 Başvuru İçeriği Bilgi Notu'ndaki alanlara göre hazırlanmış
+ayrı bir belge setidir. Sonuç raporu şablonunun kullanılması, önerinin ve resmî
+başvuru gereklerinin yerini almaz.
+
+- [Araştırma önerisi metni](2209A_Burak_Sanli_Arastirma_Onerisi.md)
+- [Araştırma önerisi Word dosyası](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.docx)
+- [Araştırma önerisi PDF dosyası](2209A_Burak_Sanli_Arastirma_Onerisi.pdf)
+- [Araştırma önerisinin uygunluk kontrolleri](uygunluk_kontrolu.json)
+- [Araştırma önerisi için TYBS aktarım rehberi](tybs_aktarim_rehberi.md)
+- [Başvuru öncesi resmî işlem kontrol listesi](basvuru_kontrol_listesi_2026.md)
 - [Doğrulanan kaynaklar ve erişim kaydı](kaynak_dogrulama.md)
-- [Ayrı PNG ekleri](ekler/README.md)
+- [Araştırma önerisinin ayrı PNG ekleri](ekler/README.md)
 
-Bölüm düzeninde yürütücünün sağladığı 2026 Başvuru İçeriği Bilgi Notu esas
-alınmıştır. Kaynaklar resmî çekirdek deposunun sabit sürüm belgelerinden
-okunmuş ve metindeki atıflarla eşleştirilmiştir. İncelenen kaynaklarda sunulmayan
-DOI numaraları üretilmemiştir. TÜBİTAK'ın bağlantılı kaynakça web sayfasına erişim
-kısıtı bulunduğu için o sayfanın güncel biçiminin bağımsız kontrol edildiği iddia edilmez.
+Kaynaklar resmî çekirdek deposunun sabit sürüm belgelerinden okunmuş ve atıflarla
+eşleştirilmiştir. İncelenen kaynaklarda sunulmayan DOI numaraları üretilmemiştir.
+TÜBİTAK'ın bağlantılı kaynakça web sayfasına erişim kısıtı bulunduğu için o
+sayfanın güncel biçiminin bağımsız kontrol edildiği iddia edilmez.
 
 **Resmî işlem durumu:** Belge düzenlemesi, TYBS'ye gönderim veya onay anlamına
 gelmez. Sistem ön izlemesi, uygunluk beyanları, bütçe girişinin kabulü, danışman
 onayı ve kuruluş yetkilisi e-imzası ilgili sistemlerde doğrulanmalıdır.
-Mevcut olanaklarla ek harcama planlanmadığı için gider öngörüsü 0 TL'dir;
-programın/sistemin bu bütçe tercihini kabulü ayrıca kontrol edilir.
+Gerçekleşen giderin 0 TL olması, destek bütçesinin program veya sistem tarafından
+onaylandığı anlamına gelmez; başvuruya özgü bu kontrol ayrı yürütülür.
 
-## Belgeleri yeniden üretme
+## Güncel raporu yeniden üretme
 
-Ana metin değiştirilirse Word ve PDF birlikte yeniden üretilir. C programlarının
-çalışması bu ek belge bağımlılığına bağlı değildir.
+Rapor üreticisi ayrı saklanan özgün Word şablonunu kullanır. Rapor metni
+değiştirildiğinde Word ve PDF birlikte yeniden üretilir. C programlarının
+çalışması belge üretim bağımlılığına bağlı değildir.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements-documents.txt
-python3 scripts/build_2209_application.py
+python3 scripts/build_2209_report.py
 ```
 
 PDF üretimi için ayrıca kurulu LibreOffice gerekir:
 
 ```bash
-python3 scripts/build_2209_application.py --pdf
+python3 scripts/build_2209_report.py --pdf
 ```
 
-Üretici resmî sisteme bağlanmaz; yeni deney yürütmez. Kelime/karakter sınırları,
-takvim ve atıf eşleşmeleri son Word dosyasından yeniden hesaplanır.
+Üretici resmî sisteme bağlanmaz ve yeni deney yürütmez. Güncel raporun kontrol
+kaydı `rapor_kontrolu.json` dosyasıdır. Başvuruya ait özet kelime/karakter ve
+takvim kontrolleri ise ayrı araştırma önerisinin `uygunluk_kontrolu.json`
+dosyasında korunur. Araştırma önerisini yeniden üretmek için kullanılan
+`scripts/build_2209_application.py`, o belge setine aittir.

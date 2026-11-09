@@ -8,6 +8,17 @@ kısa ve etkileşimli görevlerin bekleme sürelerini incelemektedir. Amaç, uzu
 ilerlemesini koruyarak kısa görevlerin yanıt süresini azaltabilecek bir zamanlama
 politikası geliştirmek ve sınırlarını karşılaştırmalı deneylerle değerlendirmektir.
 
+## Güncel proje raporu — 9 Kasım 2026
+
+[2209-A biçimindeki proje raporu](docs/basvuru/2209a/README.md), sağlanan sonuç
+raporu şablonunda mevcut çalışmaların durumunu ve altı aylık geliştirme planını
+bir araya getirir. Kapak, bilgi tabloları ve imza alanları şablondan korunur.
+Belge, tamamlanmış bir projenin resmî kapanış bildirimi olarak sunulmamaktadır.
+
+- [Word raporunu indir](https://raw.githubusercontent.com/sanlibrk/Kernel_CPU/main/docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.docx)
+- [PDF raporunu aç](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.pdf)
+- [Rapor metnini oku](docs/basvuru/2209a/2209A_Burak_Sanli_Proje_Raporu.md)
+
 ## Haftalık çalışmalar
 
 | Hafta | Kapsam | Belgeler |
@@ -73,7 +84,7 @@ yer almaktadır. Modelde I/O, çok çekirdek yerleşimi ve bağlam değiştirme 
 bulunmamaktadır. Gerçek ölçümler konteyner kotası, sanallaştırma ve sistem yükünden
 etkilenebilir; sonuçlar genel performans veya kesin gecikme garantisi değildir.
 
-Sonraki geliştirme aşaması, ekip çekirdeğini belirlemek ve ayrı bir test sanal
+Sonraki geliştirme aşaması, hedef çekirdek sürümünü belirlemek ve ayrı bir test sanal
 makinesinde `sched_ext`/BTF desteği ile güvenli yükleme/geri dönüş sürecini
 doğrulamaktır. Ardından politika kuralları çekirdeğe uyarlanarak aynı deney
 düzeninde mevcut Linux davranışıyla karşılaştırılacaktır.
@@ -99,9 +110,11 @@ Linux dağıtımında sanal ortam desteği yoksa `python3-venv` paketinin kurulm
 gerekebilir. Bu bağımlılıklar C programlarını derlemek veya test etmek için
 gerekli değildir. Sunum hedefi yeni deney yapmaz; sürümlendirilmiş veri grubunu kullanır.
 
-## Araştırma desteği başvurusu
+## Araştırma önerisi ve başvuru referansları
 
-[2209-A 2026 araştırma önerisi ve başvuru belgeleri](docs/basvuru/2209a/README.md),
-bireysel CPU zamanlama projesinin ayrıntılı altı aylık planını, güncel Word/PDF
-dosyalarını, teknik kaynakları ve TYBS aktarım rehberini içerir. Belgelerin
-hazırlanması, resmî başvurunun gönderildiği veya desteğin kabul edildiği anlamına gelmez.
+[Araştırma önerisi](docs/basvuru/2209a/2209A_Burak_Sanli_Arastirma_Onerisi.md),
+başvuru alanlarına göre hazırlanmış ayrı bir belge olarak korunmaktadır.
+[Başvuru kontrol listesi](docs/basvuru/2209a/basvuru_kontrol_listesi_2026.md)
+ve [TYBS aktarım rehberi](docs/basvuru/2209a/tybs_aktarim_rehberi.md) bu öneriye
+aittir. Güncel çalışma raporu, yukarıdaki sonuç raporu şablonuna dayanan belge
+setidir. Dosyaların hazırlanması, resmî gönderim veya destek kararı anlamına gelmez.

@@ -214,7 +214,7 @@ Ubuntu kabuğundan PowerShell'e dönmek için önce `exit` yazılır. Ardından:
 
 ```powershell
 Start-Process '.\docs\hafta2\Burak_Sanli_Hafta2_CPU_Zamanlama.pdf'
-Start-Process '.\docs\hafta2\Burak_Sanli_Hafta2_Sunum_Metni.docx'
+Start-Process '.\docs\hafta2\sunum_metni.md'
 ```
 
 Mevcut sunumu açmak için tekrar PDF üretmek gerekmez. Yalnız sunumu arşivden

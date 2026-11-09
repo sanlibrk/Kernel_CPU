@@ -1,2 +1,0 @@
-# Optional dependency for building the proposal and template-based report.
-python-docx==1.2.0

@@ -18,8 +18,6 @@ gerçek Linux süreçleri üzerinde başlangıç ölçümlerinin toplanmasını 
 
 - [Çalıştırma komutları ve canlı gösterim](calistirma_ve_canli_gosterim.md)
 - [18 slaytın konuşma metni ve soru-cevap notları](sunum_metni.md)
-- [Konuşma metni — Word](Burak_Sanli_Hafta2_Sunum_Metni.docx)
-- [Konuşma metni — PDF](Burak_Sanli_Hafta2_Sunum_Metni.pdf)
 - [Uygulama mimarisi ve algoritma ayrıntıları](uygulama.md)
 - [Deney yöntemi, tüm koşular ve sonuçların değerlendirilmesi](deney_sonuclari.md)
 - [Aşama değerlendirmesi ve sonraki adımlar](degerlendirme_ve_sonraki_adimlar.md)
@@ -67,6 +65,7 @@ doğrulanmış bir deney sonucu olarak sunulmaz.
 - [Yoğun etkileşimli model iş yükü grafiği](grafikler/interactive_pressure.png)
 - [Gerçek Linux P95 grafiği](grafikler/linux_p95.png)
 
-Sunumu ve grafikleri yeniden üretme adımları [ana sayfada](../../README.md)
-açıklanmıştır. Üretici: [`scripts/build_week2_presentation.py`](../../scripts/build_week2_presentation.py).
+Sunum ve grafikler, `requirements-presentation.txt` bağımlılıklarıyla
+`make presentation` komutu kullanılarak üretilir. Üretici:
+[`scripts/build_week2_presentation.py`](../../scripts/build_week2_presentation.py).
 Bu komut arşivi değiştirmez ve yeni performans deneyi çalıştırmaz.
